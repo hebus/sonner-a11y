@@ -159,6 +159,52 @@ toast.config({
 > `toast.config()` merges into the current configuration, so you can call it more than once and only
 > pass what changes. Use `toast.resetConfig()` to go back to the shipped defaults.
 
+## 🎨 Theming
+
+Toasts render inside a shadow root, so your stylesheets cannot reach them: a class name you passed in
+would be styled by rules that live in the document, and document rules never cross the shadow
+boundary. Inherited custom properties do. Theming is therefore a set of tokens you declare on the
+host element — or on any ancestor of it, `:root` included — which the library reads from inside.
+
+```css
+/* Your own stylesheet. `[data-sonner-toasters]` is the host the library appends to <body>. */
+[data-sonner-toasters] {
+  --sonner-success-bg: #0f2e1d;
+  --sonner-success-text: #7ee2a8;
+  --sonner-border-radius: 4px;
+}
+```
+
+Every token falls back to the shipped default, so declare only the ones you want to change.
+
+| Token                                     | Default (light / dark)                             | Applies to                              |
+| ----------------------------------------- | -------------------------------------------------- | --------------------------------------- |
+| `--sonner-normal-bg`                      | `#fff` / `#000`                                    | Toast background, and the close button  |
+| `--sonner-normal-bg-hover`                | — / `hsl(0, 0%, 12%)`                              | Hovered action button                   |
+| `--sonner-normal-border`                  | `--sonner-gray4` / `hsl(0, 0%, 20%)`               | Toast border                            |
+| `--sonner-normal-border-hover`            | — / `hsl(0, 0%, 25%)`                              | Hovered action button border            |
+| `--sonner-normal-text`                    | `--sonner-gray12` / `--sonner-gray1`               | Title, close button, focus ring         |
+| `--sonner-normal-text2`                   | `#3f3f3f` / `#e8e8e8`                              | Description                             |
+| `--sonner-normal-cancel-bg`               | `rgba(0, 0, 0, 0.08)` / `rgba(255, 255, 255, 0.3)` | Cancel button background                |
+| `--sonner-success-bg`, `-border`, `-text` | greens                                             | `success` toasts, with `richColors`     |
+| `--sonner-info-bg`, `-border`, `-text`    | blues                                              | `info` toasts, with `richColors`        |
+| `--sonner-warning-bg`, `-border`, `-text` | ambers                                             | `warning` toasts, with `richColors`     |
+| `--sonner-error-bg`, `-border`, `-text`   | reds                                               | `error` toasts, with `richColors`       |
+| `--sonner-width`                          | `356px`                                            | Toast width, above a 600px viewport     |
+| `--sonner-border-radius`                  | `8px`                                              | Toast and button corners                |
+| `--sonner-gray1` … `--sonner-gray12`      | neutral ramp                                       | Loader, buttons, and the defaults above |
+
+Three things worth knowing before reaching for them:
+
+- **The severity colours need `richColors`.** Without `toastOptions: { richColors: true }` every
+  toast uses the `--sonner-normal-*` set whatever its type, and the four severity groups are inert.
+- **One token covers both themes.** `theme: "light"` and `theme: "dark"` ship different defaults for
+  the same role, but a token you declare wins in both — and on `invert`ed toasts too. So give it a
+  value that is already theme-aware on your side, such as a design-system variable that changes under
+  your own dark-mode selector.
+- **`--sonner-width` stops applying below 600px**, where the toast is laid out full-width minus
+  `mobileOffset` instead.
+
 ## ♿ Accessibility
 
 Toasts are announced to screen readers, fully operable from the keyboard, and honour the user's
