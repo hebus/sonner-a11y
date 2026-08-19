@@ -80,7 +80,7 @@ importers:
       react-use-measure:
         specifier: ^2.1.1
         version: 2.1.7(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
-      sonner-js:
+      sonner-a11y:
         specifier: workspace:*
         version: link:..
       typescript:

@@ -16,7 +16,7 @@ let policy: TrustedTypePolicy | null | undefined
 function getPolicy() {
   if (typeof policy === 'undefined' && typeof window !== 'undefined') {
     policy =
-      window.trustedTypes?.createPolicy('sonner-js', {
+      window.trustedTypes?.createPolicy('sonner-a11y', {
         createHTML: identity,
         createScript: identity,
         createScriptURL: identity,

@@ -5,28 +5,31 @@ import '@/styles/globals.css';
 import '@/styles/index.css';
 import '@/styles/style.css';
 
-const ogImage = 'https://sonner-js.huanfe1.com/og.png';
+// deployed to GitHub Pages under /<repo>/; override with NEXT_PUBLIC_SITE_URL for another host
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://hebus.github.io/sonner-a11y';
+// metadata icon paths are not rewritten with basePath, so prefix them by hand
+const basePath = process.env.BASE_PATH ?? '';
+const description = 'An accessible toast component for pure JS: screen-reader announcements, full keyboard operation, WCAG 2.2 AA.';
 
 export const metadata: Metadata = {
-    title: 'Sonner-JS',
-    description: 'An opinionated toast component for Pure JS.',
+    metadataBase: new URL(siteUrl),
+    title: 'Sonner-a11y',
+    description,
     twitter: {
-        images: ogImage,
+        images: '/og.png',
         card: 'summary_large_image',
-        site: '@huanfe1',
-        creator: '@huanfe1',
     },
     icons: {
-        shortcut: '/favicon.ico',
+        shortcut: `${basePath}/favicon.ico`,
     },
     openGraph: {
-        title: 'Sonner-JS',
-        description: 'An opinionated toast component for Pure JS.',
-        url: 'https://sonner-js.huanfe1.com/',
-        siteName: 'Sonner-JS',
+        title: 'Sonner-a11y',
+        description,
+        url: siteUrl,
+        siteName: 'Sonner-a11y',
         locale: 'en',
         type: 'website',
-        images: ogImage,
+        images: '/og.png',
     },
 };
 

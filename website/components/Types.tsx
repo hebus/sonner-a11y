@@ -1,5 +1,5 @@
 import React from 'react';
-import toast from 'sonner-js';
+import toast from 'sonner-a11y';
 
 import { CodeBlock } from './CodeBlock';
 
