@@ -31,9 +31,12 @@ focus to whatever had it before.
 | `pnpm lint`          | oxlint, including type-aware rules                                     |
 | `pnpm format`        | oxfmt (`pnpm format:check` in CI)                                      |
 | `pnpm typecheck`     | `tsc --noEmit`                                                         |
-| `pnpm test`          | vitest, on happy-dom                                                   |
+| `pnpm test`          | unit tests on happy-dom — fast, run these while you work               |
+| `pnpm test:browser`  | the accessibility suite, in a real Chromium via Playwright             |
+| `pnpm test:coverage` | both suites, with the coverage floors CI enforces                      |
 | `pnpm build`         | Vite bundle plus declarations from `tsc`                               |
 | `pnpm check:package` | publint, are-the-types-wrong, and a real install of the packed tarball |
+| `pnpm size`          | the gzipped budget for the published bundle                            |
 
 CI runs all of them. `pnpm check:package` needs `pnpm build` first; it packs the tarball, installs it
 into a throwaway project and type-checks a caller against it, which is what catches declarations

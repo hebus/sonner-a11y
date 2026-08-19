@@ -33,6 +33,14 @@ jobs:
 
       - run: pnpm test
 
+      # the accessibility promises need a real browser: happy-dom has no layout, no `:focus-visible`,
+      # no trustworthy constructable stylesheets and no `getAnimations()`
+      - name: Install Chromium
+        run: pnpm exec playwright install --with-deps chromium
+
+      - name: Browser tests and coverage thresholds
+        run: pnpm test:coverage
+
       # also proves the declarations still emit, since `build` runs tsc after Vite
       - run: pnpm build
 
@@ -40,3 +48,7 @@ jobs:
       # so a declaration that hides part of the API fails here rather than in a consumer's repo
       - name: Validate the published package
         run: pnpm check:package
+
+      # the library sells itself on being small, so the budget is enforced rather than hoped for
+      - name: Size budget
+        run: pnpm size
