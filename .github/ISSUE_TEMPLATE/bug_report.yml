@@ -1,0 +1,38 @@
+name: Bug report
+description: Something behaves incorrectly
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        For anything involving a screen reader, keyboard navigation, forced colors or reduced motion,
+        use the **Accessibility issue** template instead — it asks for the details we need.
+  - type: textarea
+    id: what-happens
+    attributes:
+      label: What happens
+      description: And what you expected instead.
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: How to reproduce
+      description: The smallest snippet that shows it, or a link to a reproduction.
+      render: js
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: sonner-a11y version
+      placeholder: 1.0.0
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Browser, bundler and versions
+      placeholder: Chrome 139, Vite 8
+    validations:
+      required: true

@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Question or usage help
+    url: https://github.com/hebus/sonner-a11y/discussions
+    about: Ask in Discussions — issues are for defects and proposals.
+  - name: Documentation
+    url: https://hebus.github.io/sonner-a11y/
+    about: Options, accessibility behaviour and examples.
+  - name: Report a vulnerability
+    url: https://github.com/hebus/sonner-a11y/security/advisories/new
+    about: Privately, through a security advisory. See SECURITY.md.

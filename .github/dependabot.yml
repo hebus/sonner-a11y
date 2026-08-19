@@ -1,0 +1,33 @@
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: monthly
+    groups:
+      # one pull request per toolchain rather than one per package: these move together and are
+      # verified by the same CI run
+      oxc:
+        patterns: ["oxlint", "oxlint-tsgolint", "oxfmt"]
+      vite:
+        patterns: ["vite", "vitest", "@vitest/*", "happy-dom"]
+      packaging:
+        patterns: ["publint", "@arethetypeswrong/cli", "terser"]
+    commit-message:
+      prefix: "chore"
+  - package-ecosystem: npm
+    directory: /website
+    schedule:
+      interval: monthly
+    groups:
+      next:
+        patterns:
+          ["next", "eslint-config-next", "react", "react-dom", "@types/react", "@types/react-dom"]
+    commit-message:
+      prefix: "chore"
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
+    commit-message:
+      prefix: "ci"

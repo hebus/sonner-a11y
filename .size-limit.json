@@ -1,0 +1,8 @@
+[
+  {
+    "name": "toast (whole library)",
+    "path": "dist/index.js",
+    "limit": "9 kB",
+    "gzip": true
+  }
+]

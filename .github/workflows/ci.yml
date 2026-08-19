@@ -1,0 +1,63 @@
+name: CI
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches: [main]
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Lint
+        run: pnpm lint
+
+      - name: Check formatting
+        run: pnpm format:check
+
+      - name: Type-check
+        run: pnpm typecheck
+
+      - run: pnpm test
+
+      # the accessibility promises need a real browser: happy-dom has no layout, no `:focus-visible`,
+      # no trustworthy constructable stylesheets and no `getAnimations()`
+      - name: Cache Playwright browsers
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml') }}
+          restore-keys: playwright-${{ runner.os }}-
+
+      # no `--with-deps`: the system libraries Chromium needs already ship in the ubuntu-latest
+      # image, and installing them anyway cost 820s of the first run — against 10s for the tests
+      - name: Install Chromium
+        run: pnpm exec playwright install chromium
+
+      - name: Browser tests and coverage thresholds
+        run: pnpm test:coverage
+
+      # also proves the declarations still emit, since `build` runs tsc after Vite
+      - run: pnpm build
+
+      # packs the tarball, installs it into a throwaway project and type-checks a caller against it,
+      # so a declaration that hides part of the API fails here rather than in a consumer's repo
+      - name: Validate the published package
+        run: pnpm check:package
+
+      # the library sells itself on being small, so the budget is enforced rather than hoped for
+      - name: Size budget
+        run: pnpm size

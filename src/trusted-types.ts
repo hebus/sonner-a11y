@@ -1,29 +1,28 @@
-
 function identity<T>(x: T): T {
-  return x
+  return x;
 }
 
 /**
  * Stores the Trusted Types Policy. Starts as undefined and can be set to null
  * if Trusted Types is not supported in the browser.
  */
-let policy: TrustedTypePolicy | null | undefined
+let policy: TrustedTypePolicy | null | undefined;
 
 /**
  * Getter for the Trusted Types Policy. If it is undefined, it is instantiated
  * here or set to null if Trusted Types is not supported in the browser.
  */
 function getPolicy() {
-  if (typeof policy === 'undefined' && typeof window !== 'undefined') {
+  if (typeof policy === "undefined" && typeof window !== "undefined") {
     policy =
-      window.trustedTypes?.createPolicy('sonner-a11y', {
+      window.trustedTypes?.createPolicy("sonner-a11y", {
         createHTML: identity,
         createScript: identity,
         createScriptURL: identity,
-      }) || null
+      }) || null;
   }
 
-  return policy
+  return policy;
 }
 
 /**
@@ -34,8 +33,6 @@ function getPolicy() {
  * provided string will never cause an XSS vulnerability if used in a context
  * that will cause a browser to execute a script
  */
-export function __unsafeCreateTrustedHtml(
-  html: string
-): string {
-  return (getPolicy()?.createHTML(html) || html) as string
+export function __unsafeCreateTrustedHtml(html: string): string {
+  return (getPolicy()?.createHTML(html) || html) as string;
 }

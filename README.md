@@ -2,6 +2,7 @@
   <h1>🍞 Sonner-a11y</h1>
   <p>An accessible toast component designed for Pure JavaScript</p>
 
+[![CI](https://img.shields.io/github/actions/workflow/status/hebus/sonner-a11y/ci.yml?branch=main&style=flat-square&label=CI)](https://github.com/hebus/sonner-a11y/actions/workflows/ci.yml)
 [![npm version](https://img.shields.io/npm/v/sonner-a11y.svg?style=flat-square)](https://www.npmjs.com/package/sonner-a11y)
 [![npm downloads](https://img.shields.io/npm/dm/sonner-a11y.svg?style=flat-square)](https://www.npmjs.com/package/sonner-a11y)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://opensource.org/licenses/MIT)
@@ -20,7 +21,7 @@
 - ⚡ **Lightweight** - Small bundle size with excellent performance
 - 🔧 **Highly Customizable** - Rich configuration options
 - 🌙 **Theme Support** - Built-in light and dark themes
-- 📦 **Multi-format Support** - UMD, ESM, CommonJS formats
+- 📦 **ESM** - tree-shakeable (`sideEffects: false`), consumed by every modern bundler
 - ♿ **Accessible** - Screen reader announcements, full keyboard operation, WCAG 2.2 AA
 
 ## 🚀 Quick Start
@@ -34,14 +35,14 @@ npm install sonner-a11y
 ### Basic Usage
 
 ```javascript
-import toast from 'sonner-a11y';
+import toast from "sonner-a11y";
 
 // Simple toast
-toast('Hello World!');
+toast("Hello World!");
 
 // Toast with description
-toast('Operation successful', {
-    description: 'Your data has been saved',
+toast("Operation successful", {
+  description: "Your data has been saved",
 });
 ```
 
@@ -51,47 +52,47 @@ toast('Operation successful', {
 
 ```javascript
 // Success toast
-toast.success('Operation successful');
+toast.success("Operation successful");
 
 // Error toast
-toast.error('Operation failed');
+toast.error("Operation failed");
 
 // Info toast
-toast.info('This is an information');
+toast.info("This is an information");
 
 // Warning toast
-toast.warning('Please note');
+toast.warning("Please note");
 ```
 
 ### Toast with Action Buttons
 
 ```javascript
-toast('Confirm action', {
-    action: {
-        label: 'Confirm',
-        onClick: () => console.log('User clicked confirm'),
-    },
+toast("Confirm action", {
+  action: {
+    label: "Confirm",
+    onClick: () => console.log("User clicked confirm"),
+  },
 });
 
 // With cancel button
-toast('Confirm deletion', {
-    action: {
-        label: 'Cancel',
-        onClick: () => console.log('User cancelled operation'),
-        cancel: true,
-    },
+toast("Confirm deletion", {
+  action: {
+    label: "Cancel",
+    onClick: () => console.log("User cancelled operation"),
+    cancel: true,
+  },
 });
 ```
 
 ### Promise Handling
 
 ```javascript
-const fetchData = () => fetch('/api/data');
+const fetchData = () => fetch("/api/data");
 
 toast.promise(fetchData, {
-    loading: 'Loading...',
-    success: 'Data loaded successfully',
-    error: 'Failed to load data',
+  loading: "Loading...",
+  success: "Data loaded successfully",
+  error: "Failed to load data",
 });
 ```
 
@@ -99,10 +100,10 @@ toast.promise(fetchData, {
 
 ```javascript
 // Create toast and get ID
-const toastId = toast('Processing...');
+const toastId = toast("Processing...");
 
 // Update toast
-toast.success('Processing complete', { id: toastId });
+toast.success("Processing complete", { id: toastId });
 
 // Dismiss specific toast
 toast.dismiss(toastId);
@@ -114,55 +115,44 @@ toast.dismiss();
 ### Permanent Toasts
 
 ```javascript
-toast('Important notice', {
-    duration: 0, // Set to 0 for permanent display
+toast("Important notice", {
+  duration: 0, // Set to 0 for permanent display
 });
 ```
 
 ## 🌐 CDN Usage
 
-### UMD Format
-
-```html
-<script src="https://cdn.jsdelivr.net/npm/sonner-a11y/dist/umd/index.min.js"></script>
-<script>
-    sonnerA11y('Hello from CDN!');
-</script>
-```
-
-### ESM Format
-
 ```html
 <script type="module">
-    import toast from 'https://cdn.jsdelivr.net/npm/sonner-a11y/+esm';
+  import toast from "https://cdn.jsdelivr.net/npm/sonner-a11y/+esm";
 
-    toast('Hello from ESM!');
+  toast("Hello from ESM!");
 </script>
 ```
 
 ## ⚙️ Configuration Options
 
 ```javascript
-import toast from 'sonner-a11y';
+import toast from "sonner-a11y";
 
 // Global configuration
 toast.config({
-    theme: 'dark', // 'light' | 'dark'
-    expand: true, // Expand animation
-    visibleToasts: 3, // Number of visible toasts
-    gap: 8, // Toast spacing
-    offset: 16, // Margin
-    mobileOffset: 16, // Mobile margin
-    dir: 'ltr', // Text direction
-    toastOptions: {
-        position: 'top-right', // Position
-        duration: 4000, // Duration in milliseconds
-        closeButton: true, // Show close button
-        richColors: true, // Rich colors
-        invert: false, // Invert the colours of the toast
-        important: 'auto', // Screen-reader politeness, see Accessibility
-        titleAsHtml: false, // Interpret `title` as HTML
-    },
+  theme: "dark", // 'light' | 'dark'
+  expand: true, // Expand animation
+  visibleToasts: 3, // Number of visible toasts
+  gap: 8, // Toast spacing
+  offset: 16, // Margin
+  mobileOffset: 16, // Mobile margin
+  dir: "ltr", // Text direction
+  toastOptions: {
+    position: "top-right", // Position
+    duration: 4000, // Duration in milliseconds
+    closeButton: true, // Show close button
+    richColors: true, // Rich colors
+    invert: false, // Invert the colours of the toast
+    important: "auto", // Screen-reader politeness, see Accessibility
+    titleAsHtml: false, // Interpret `title` as HTML
+  },
 });
 ```
 
@@ -195,8 +185,8 @@ Errors interrupt (`aria-live="assertive"`), everything else is announced politel
 toast with `important`:
 
 ```javascript
-toast.error('Payment failed', { important: false }); // announce politely
-toast('Build finished', { important: true }); // interrupt
+toast.error("Payment failed", { important: false }); // announce politely
+toast("Build finished", { important: true }); // interrupt
 ```
 
 The severity is also carried as text for screen readers, since an icon and a colour alone are not
@@ -208,28 +198,28 @@ Defaults are in English. Everything a screen reader reads can be replaced:
 
 ```javascript
 toast.config({
-    a11y: {
-        hotkey: ['altKey', 'KeyN'], // modifier properties and/or KeyboardEvent.code values
-        labels: {
-            region: 'Notifications', // `{hotkey}` is substituted, otherwise appended in parentheses
-            close: 'Fermer la notification',
-            action: 'Action',
-            types: {
-                success: 'Succès',
-                error: 'Erreur',
-                info: 'Information',
-                warning: 'Avertissement',
-                loading: 'Chargement',
-            },
-        },
+  a11y: {
+    hotkey: ["altKey", "KeyN"], // modifier properties and/or KeyboardEvent.code values
+    labels: {
+      region: "Notifications", // `{hotkey}` is substituted, otherwise appended in parentheses
+      close: "Fermer la notification",
+      action: "Action",
+      types: {
+        success: "Succès",
+        error: "Erreur",
+        info: "Information",
+        warning: "Avertissement",
+        loading: "Chargement",
+      },
     },
+  },
 });
 ```
 
 Per toast, `typeLabel` overrides the severity label:
 
 ```javascript
-toast.error('HTTP 502', { typeLabel: 'Erreur serveur' });
+toast.error("HTTP 502", { typeLabel: "Erreur serveur" });
 ```
 
 ### Other `a11y` options
@@ -260,6 +250,15 @@ toast.error('HTTP 502', { typeLabel: 'Erreur serveur' });
   the caller is then responsible for sanitising it.
 - A fixed-position toast can cover the element that currently has focus (WCAG 2.4.11). If that
   matters for your layout, raise `offset` or use a `top-*` position.
+
+## 🤝 Contributing
+
+Bug reports, accessibility reports and pull requests are welcome. Start with
+[CONTRIBUTING.md](CONTRIBUTING.md): it covers the test bench served by `pnpm dev`, how to verify a
+change with a screen reader and a keyboard, and the invariants in the code that are load-bearing.
+
+By participating you agree to the [Code of Conduct](CODE_OF_CONDUCT.md). To report a vulnerability,
+see [SECURITY.md](SECURITY.md).
 
 ## 🚀 Releasing
 
