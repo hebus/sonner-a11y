@@ -24,72 +24,72 @@
 
 [data-sonner-toaster][data-sonner-theme="light"],
 [data-sonner-toaster][data-sonner-theme="dark"] > [data-sonner-toast][data-invert] {
-  --normal-bg: #fff;
-  --normal-border: var(--gray4);
-  --normal-text: var(--gray12);
-  --normal-text2: #3f3f3f;
-  --normal-cancel-bg: rgba(0, 0, 0, 0.08);
+  --_sonner-normal-bg: var(--sonner-normal-bg, #fff);
+  --_sonner-normal-border: var(--sonner-normal-border, var(--_sonner-gray4));
+  --_sonner-normal-text: var(--sonner-normal-text, var(--_sonner-gray12));
+  --_sonner-normal-text2: var(--sonner-normal-text2, #3f3f3f);
+  --_sonner-normal-cancel-bg: var(--sonner-normal-cancel-bg, rgba(0, 0, 0, 0.08));
 
-  --success-bg: hsl(143, 85%, 96%);
-  --success-border: hsl(145, 92%, 87%);
-  --success-text: hsl(140, 100%, 25%);
+  --_sonner-success-bg: var(--sonner-success-bg, hsl(143, 85%, 96%));
+  --_sonner-success-border: var(--sonner-success-border, hsl(145, 92%, 87%));
+  --_sonner-success-text: var(--sonner-success-text, hsl(140, 100%, 25%));
 
-  --info-bg: hsl(208, 100%, 97%);
-  --info-border: hsl(221, 91%, 93%);
-  --info-text: hsl(210, 92%, 42%);
+  --_sonner-info-bg: var(--sonner-info-bg, hsl(208, 100%, 97%));
+  --_sonner-info-border: var(--sonner-info-border, hsl(221, 91%, 93%));
+  --_sonner-info-text: var(--sonner-info-text, hsl(210, 92%, 42%));
 
-  --warning-bg: hsl(49, 100%, 97%);
-  --warning-border: hsl(49, 91%, 84%);
-  --warning-text: hsl(31, 92%, 35%);
+  --_sonner-warning-bg: var(--sonner-warning-bg, hsl(49, 100%, 97%));
+  --_sonner-warning-border: var(--sonner-warning-border, hsl(49, 91%, 84%));
+  --_sonner-warning-text: var(--sonner-warning-text, hsl(31, 92%, 35%));
 
-  --error-bg: hsl(359, 100%, 97%);
-  --error-border: hsl(359, 100%, 94%);
-  --error-text: hsl(360, 100%, 42%);
+  --_sonner-error-bg: var(--sonner-error-bg, hsl(359, 100%, 97%));
+  --_sonner-error-border: var(--sonner-error-border, hsl(359, 100%, 94%));
+  --_sonner-error-text: var(--sonner-error-text, hsl(360, 100%, 42%));
 }
 
 [data-sonner-toaster][data-sonner-theme="dark"],
 [data-sonner-toaster][data-sonner-theme="light"] > [data-sonner-toast][data-invert] {
-  --normal-bg: #000;
-  --normal-bg-hover: hsl(0, 0%, 12%);
-  --normal-border: hsl(0, 0%, 20%);
-  --normal-border-hover: hsl(0, 0%, 25%);
-  --normal-text: var(--gray1);
-  --normal-text2: #e8e8e8;
-  --normal-cancel-bg: rgba(255, 255, 255, 0.3);
+  --_sonner-normal-bg: var(--sonner-normal-bg, #000);
+  --_sonner-normal-bg-hover: var(--sonner-normal-bg-hover, hsl(0, 0%, 12%));
+  --_sonner-normal-border: var(--sonner-normal-border, hsl(0, 0%, 20%));
+  --_sonner-normal-border-hover: var(--sonner-normal-border-hover, hsl(0, 0%, 25%));
+  --_sonner-normal-text: var(--sonner-normal-text, var(--_sonner-gray1));
+  --_sonner-normal-text2: var(--sonner-normal-text2, #e8e8e8);
+  --_sonner-normal-cancel-bg: var(--sonner-normal-cancel-bg, rgba(255, 255, 255, 0.3));
 
-  --success-bg: hsl(150, 100%, 6%);
-  --success-border: hsl(147, 100%, 12%);
-  --success-text: hsl(150, 86%, 65%);
+  --_sonner-success-bg: var(--sonner-success-bg, hsl(150, 100%, 6%));
+  --_sonner-success-border: var(--sonner-success-border, hsl(147, 100%, 12%));
+  --_sonner-success-text: var(--sonner-success-text, hsl(150, 86%, 65%));
 
-  --info-bg: hsl(215, 100%, 6%);
-  --info-border: hsl(223, 43%, 17%);
-  --info-text: hsl(216, 87%, 65%);
+  --_sonner-info-bg: var(--sonner-info-bg, hsl(215, 100%, 6%));
+  --_sonner-info-border: var(--sonner-info-border, hsl(223, 43%, 17%));
+  --_sonner-info-text: var(--sonner-info-text, hsl(216, 87%, 65%));
 
-  --warning-bg: hsl(64, 100%, 6%);
-  --warning-border: hsl(60, 100%, 9%);
-  --warning-text: hsl(46, 87%, 65%);
+  --_sonner-warning-bg: var(--sonner-warning-bg, hsl(64, 100%, 6%));
+  --_sonner-warning-border: var(--sonner-warning-border, hsl(60, 100%, 9%));
+  --_sonner-warning-text: var(--sonner-warning-text, hsl(46, 87%, 65%));
 
-  --error-bg: hsl(358, 76%, 10%);
-  --error-border: hsl(357, 89%, 16%);
-  --error-text: hsl(358, 100%, 81%);
+  --_sonner-error-bg: var(--sonner-error-bg, hsl(358, 76%, 10%));
+  --_sonner-error-border: var(--sonner-error-border, hsl(357, 89%, 16%));
+  --_sonner-error-text: var(--sonner-error-text, hsl(358, 100%, 81%));
 }
 
 [data-sonner-toaster] {
-  --width: 356px;
-  --gray1: hsl(0, 0%, 99%);
-  --gray2: hsl(0, 0%, 97.3%);
-  --gray3: hsl(0, 0%, 95.1%);
-  --gray4: hsl(0, 0%, 93%);
-  --gray5: hsl(0, 0%, 90.9%);
-  --gray6: hsl(0, 0%, 88.7%);
-  --gray7: hsl(0, 0%, 85.8%);
-  --gray8: hsl(0, 0%, 78%);
-  --gray9: hsl(0, 0%, 56.1%);
-  --gray10: hsl(0, 0%, 52.3%);
-  --gray11: hsl(0, 0%, 43.5%);
-  --gray12: hsl(0, 0%, 9%);
-  --border-radius: 8px;
-  --normal-bg: #fff;
+  --_sonner-width: var(--sonner-width, 356px);
+  --_sonner-gray1: var(--sonner-gray1, hsl(0, 0%, 99%));
+  --_sonner-gray2: var(--sonner-gray2, hsl(0, 0%, 97.3%));
+  --_sonner-gray3: var(--sonner-gray3, hsl(0, 0%, 95.1%));
+  --_sonner-gray4: var(--sonner-gray4, hsl(0, 0%, 93%));
+  --_sonner-gray5: var(--sonner-gray5, hsl(0, 0%, 90.9%));
+  --_sonner-gray6: var(--sonner-gray6, hsl(0, 0%, 88.7%));
+  --_sonner-gray7: var(--sonner-gray7, hsl(0, 0%, 85.8%));
+  --_sonner-gray8: var(--sonner-gray8, hsl(0, 0%, 78%));
+  --_sonner-gray9: var(--sonner-gray9, hsl(0, 0%, 56.1%));
+  --_sonner-gray10: var(--sonner-gray10, hsl(0, 0%, 52.3%));
+  --_sonner-gray11: var(--sonner-gray11, hsl(0, 0%, 43.5%));
+  --_sonner-gray12: var(--sonner-gray12, hsl(0, 0%, 9%));
+  --_sonner-border-radius: var(--sonner-border-radius, 8px);
+  --_sonner-normal-bg: var(--sonner-normal-bg, #fff);
 }
 
 [data-sonner-toaster] {
@@ -100,13 +100,13 @@
   margin: 0;
   outline: none;
   padding: 0;
-  width: var(--width);
+  width: var(--_sonner-width);
   list-style: none;
   user-select: none;
 
   & > * {
     box-sizing: border-box;
-    border: 0 solid var(--normal-border);
+    border: 0 solid var(--_sonner-normal-border);
   }
 }
 
@@ -122,13 +122,13 @@
     height 0.4s;
   box-sizing: border-box;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  border: 1px solid var(--normal-border);
-  border-radius: var(--border-radius);
-  background-color: var(--normal-bg);
+  border: 1px solid var(--_sonner-normal-border);
+  border-radius: var(--_sonner-border-radius);
+  background-color: var(--_sonner-normal-bg);
   padding: 16px;
-  width: var(--width);
+  width: var(--_sonner-width);
   height: var(--init-height);
-  color: var(--normal-text);
+  color: var(--_sonner-normal-text);
   font-size: 13px;
 
   &[data-state="created"] {
@@ -195,7 +195,7 @@
     }
 
     [data-description] {
-      color: var(--normal-text2);
+      color: var(--_sonner-normal-text2);
       font-weight: 400;
       line-height: 1.5;
     }
@@ -213,10 +213,10 @@
     margin-left: auto;
     border: none;
     border-radius: 4px;
-    background: var(--normal-text);
+    background: var(--_sonner-normal-text);
     padding: 0 8px;
     height: 24px;
-    color: var(--normal-bg);
+    color: var(--_sonner-normal-bg);
     font-weight: 500;
     font-size: 12px;
     line-height: normal;
@@ -226,13 +226,13 @@
     text-transform: inherit;
 
     &[data-cancel] {
-      background: var(--normal-cancel-bg);
-      color: var(--normal-text);
+      background: var(--_sonner-normal-cancel-bg);
+      color: var(--_sonner-normal-text);
     }
 
     /* offset onto the toast background, where the contrast is high */
     &:focus-visible {
-      outline: 2px solid var(--normal-text);
+      outline: 2px solid var(--_sonner-normal-text);
       outline-offset: 2px;
     }
   }
@@ -254,7 +254,7 @@
 
 /* the toast is focusable, so it needs its own focus ring */
 [data-sonner-toast]:focus-visible {
-  outline: 2px solid var(--normal-text);
+  outline: 2px solid var(--_sonner-normal-text);
   outline-offset: 2px;
 }
 
@@ -399,17 +399,17 @@
     background 200ms,
     border-color 200ms;
   cursor: pointer;
-  border: 1px solid var(--gray4);
+  border: 1px solid var(--_sonner-gray4);
   border-radius: 50%;
-  background: var(--normal-bg);
+  background: var(--_sonner-normal-bg);
   padding: 0;
   width: 20px;
   height: 20px;
-  color: var(--gray12);
+  color: var(--_sonner-gray12);
 
   &:hover {
-    border-color: var(--gray5);
-    background: var(--gray2);
+    border-color: var(--_sonner-gray5);
+    background: var(--_sonner-gray2);
   }
 
   /* enlarges the hit area to 24x24 CSS px (WCAG 2.5.8) without changing the visuals */
@@ -422,74 +422,74 @@
   /* outline rather than box-shadow: the former is forced to CanvasText in forced-colors mode,
        the latter is not painted at all, and rgba(0,0,0,0.2) only reached 1.6:1 */
   &:focus-visible {
-    outline: 2px solid var(--gray12);
+    outline: 2px solid var(--_sonner-gray12);
     outline-offset: 2px;
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
   }
 }
 
 [data-sonner-toaster][data-sonner-theme="dark"] [data-close-button="true"] {
-  border-color: var(--normal-border);
-  background: var(--normal-bg);
-  color: var(--normal-text);
+  border-color: var(--_sonner-normal-border);
+  background: var(--_sonner-normal-bg);
+  color: var(--_sonner-normal-text);
 
   &:hover {
-    border-color: var(--normal-border-hover);
-    background: var(--normal-bg-hover);
+    border-color: var(--_sonner-normal-border-hover);
+    background: var(--_sonner-normal-bg-hover);
   }
 
   &:focus-visible {
-    outline-color: var(--normal-text);
+    outline-color: var(--_sonner-normal-text);
   }
 }
 
 /* richColors */
 [data-sonner-toast][data-rich-colors] {
   &[data-type="success"] {
-    border-color: var(--success-border);
-    background: var(--success-bg);
-    color: var(--success-text);
+    border-color: var(--_sonner-success-border);
+    background: var(--_sonner-success-bg);
+    color: var(--_sonner-success-text);
 
     & [data-close-button="true"] {
-      border-color: var(--success-border);
-      background: var(--success-bg);
-      color: var(--success-text);
+      border-color: var(--_sonner-success-border);
+      background: var(--_sonner-success-bg);
+      color: var(--_sonner-success-text);
     }
   }
 
   &[data-type="info"] {
-    border-color: var(--info-border);
-    background: var(--info-bg);
-    color: var(--info-text);
+    border-color: var(--_sonner-info-border);
+    background: var(--_sonner-info-bg);
+    color: var(--_sonner-info-text);
 
     & [data-close-button] {
-      border-color: var(--info-border);
-      background: var(--info-bg);
-      color: var(--info-text);
+      border-color: var(--_sonner-info-border);
+      background: var(--_sonner-info-bg);
+      color: var(--_sonner-info-text);
     }
   }
 
   &[data-type="warning"] {
-    border-color: var(--warning-border);
-    background: var(--warning-bg);
-    color: var(--warning-text);
+    border-color: var(--_sonner-warning-border);
+    background: var(--_sonner-warning-bg);
+    color: var(--_sonner-warning-text);
 
     & [data-close-button] {
-      border-color: var(--warning-border);
-      background: var(--warning-bg);
-      color: var(--warning-text);
+      border-color: var(--_sonner-warning-border);
+      background: var(--_sonner-warning-bg);
+      color: var(--_sonner-warning-text);
     }
   }
 
   &[data-type="error"] {
-    border-color: var(--error-border);
-    background: var(--error-bg);
-    color: var(--error-text);
+    border-color: var(--_sonner-error-border);
+    background: var(--_sonner-error-bg);
+    color: var(--_sonner-error-text);
 
     & [data-close-button] {
-      border-color: var(--error-border);
-      background: var(--error-bg);
-      color: var(--error-text);
+      border-color: var(--_sonner-error-border);
+      background: var(--_sonner-error-bg);
+      color: var(--_sonner-error-text);
     }
   }
 }
@@ -518,7 +518,7 @@
     top: -3.9%;
     left: -10%;
     border-radius: 6px;
-    background: var(--gray11);
+    background: var(--_sonner-gray11);
     width: 24%;
     height: 8%;
 
