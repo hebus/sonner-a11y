@@ -30,17 +30,23 @@ const promise = <ToastData>(promise: PromiseT<ToastData>, data?: PromiseData<Toa
         .finally(data.finally);
 };
 
-const toast = (message: string, options?: Omit<ExternalToast, 'richColors'>) => addToast({ title: message, ...options });
-
-toast.message = (message: string, options?: Omit<ExternalToast, 'richColors'>) => addToast({ title: message, ...options });
-toast.success = (message: string, options?: ExternalToast) => addToast({ type: 'success', title: message, ...options });
-toast.error = (message: string, options?: ExternalToast) => addToast({ type: 'error', title: message, ...options });
-toast.info = (message: string, options?: ExternalToast) => addToast({ type: 'info', title: message, ...options });
-toast.warning = (message: string, options?: ExternalToast) => addToast({ type: 'warning', title: message, ...options });
-toast.loading = (message: string, options?: ExternalToast) => addToast({ type: 'loading', title: message, duration: 0, ...options });
-toast.dismiss = dismissToast;
-toast.promise = promise;
-toast.config = setConfig;
-toast.resetConfig = resetConfig;
+/**
+ * Assembled with `Object.assign` rather than successive `toast.x = …` assignments: the latter makes
+ * TypeScript emit a `declare function` plus a `declare namespace`, and because that namespace also
+ * re-exports `dismiss`/`config`/`resetConfig`, its remaining members stop being implicitly exported.
+ * Consumers then get `Property 'success' does not exist on type 'typeof toast'`.
+ */
+const toast = Object.assign((message: string, options?: Omit<ExternalToast, 'richColors'>) => addToast({ title: message, ...options }), {
+    message: (message: string, options?: Omit<ExternalToast, 'richColors'>) => addToast({ title: message, ...options }),
+    success: (message: string, options?: ExternalToast) => addToast({ type: 'success', title: message, ...options }),
+    error: (message: string, options?: ExternalToast) => addToast({ type: 'error', title: message, ...options }),
+    info: (message: string, options?: ExternalToast) => addToast({ type: 'info', title: message, ...options }),
+    warning: (message: string, options?: ExternalToast) => addToast({ type: 'warning', title: message, ...options }),
+    loading: (message: string, options?: ExternalToast) => addToast({ type: 'loading', title: message, duration: 0, ...options }),
+    dismiss: dismissToast,
+    promise,
+    config: setConfig,
+    resetConfig,
+});
 
 export default toast;

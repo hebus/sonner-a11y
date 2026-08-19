@@ -1,10 +1,8 @@
 import { regionLabel, rememberToasterPosition, setExpandSource, wireRegion } from './a11y';
 import { ensureAnnouncer } from './announcer';
 import { config, registerConfigUpdateCallback } from './config';
+import style from './style.css?inline';
 import { Position } from './types';
-
-// import './style.scss';
-import style from './style.scss';
 
 function getContainer(): ShadowRoot {
     const toasters = document.querySelector('[data-sonner-toasters]')?.shadowRoot;

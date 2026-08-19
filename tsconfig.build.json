@@ -1,0 +1,13 @@
+{
+    "extends": "./tsconfig.json",
+    "compilerOptions": {
+        "noEmit": false,
+        "declaration": true,
+        "emitDeclarationOnly": true,
+        "outDir": "dist",
+        // Explicit: TypeScript 7 defaults `rootDir` to `./`, which would emit `dist/src/index.d.ts`
+        // and break the `types` entry in package.json.
+        "rootDir": "src"
+    },
+    "exclude": ["src/**/*.test.ts"]
+}

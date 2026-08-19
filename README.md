@@ -20,7 +20,7 @@
 - ⚡ **Lightweight** - Small bundle size with excellent performance
 - 🔧 **Highly Customizable** - Rich configuration options
 - 🌙 **Theme Support** - Built-in light and dark themes
-- 📦 **Multi-format Support** - UMD, ESM, CommonJS formats
+- 📦 **Dual-format Support** - ESM and CommonJS
 - ♿ **Accessible** - Screen reader announcements, full keyboard operation, WCAG 2.2 AA
 
 ## 🚀 Quick Start
@@ -120,17 +120,6 @@ toast('Important notice', {
 ```
 
 ## 🌐 CDN Usage
-
-### UMD Format
-
-```html
-<script src="https://cdn.jsdelivr.net/npm/sonner-a11y/dist/umd/index.min.js"></script>
-<script>
-    sonnerA11y('Hello from CDN!');
-</script>
-```
-
-### ESM Format
 
 ```html
 <script type="module">

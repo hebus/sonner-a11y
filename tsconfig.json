@@ -2,11 +2,15 @@
     "compilerOptions": {
         "target": "ESNext",
         "module": "ESNext",
-        "moduleResolution": "node",
+        // `node`/`node10` was removed in TypeScript 7; `bundler` is the right mode for a Vite build.
+        "moduleResolution": "bundler",
+        "lib": ["ESNext", "DOM", "DOM.Iterable"],
+        // TypeScript 7 defaults `types` to `[]`, so the Trusted Types globals `src/trusted-types.ts`
+        // relies on (`TrustedTypePolicy`, `window.trustedTypes`) have to be requested explicitly.
+        "types": ["trusted-types"],
         "strict": true,
-        "outDir": "dist",
-        "declaration": false,
-        "esModuleInterop": true
+        // Emitting is Vite's job; `tsconfig.build.json` overrides this to emit the declarations only.
+        "noEmit": true
     },
     "include": ["src"]
 }
