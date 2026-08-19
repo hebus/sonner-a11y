@@ -49,6 +49,11 @@ export function addToast(options: ToastType) {
   const toast: HTMLElement = document.createElement("li");
 
   toast.setAttribute("data-sonner-toast", "");
+  // the <ol> carries an explicit role="list" because `list-style: none` strips the list semantics on
+  // WebKit; this is the other half of that fix. An <li> whose display is no longer `list-item` — and
+  // these are `display: flex` — loses its implicit `listitem` role too, which the role on the parent
+  // does not restore, leaving the list announced without its items.
+  toast.setAttribute("role", "listitem");
   // focusable so the toast can be reached by Tab and by the hotkey
   toast.setAttribute("tabindex", "0");
   options.type && toast.setAttribute("data-type", options.type);

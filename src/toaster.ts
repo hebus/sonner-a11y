@@ -77,7 +77,8 @@ export function getToaster(position: Position) {
 
   const toaster = document.createElement("ol");
   toaster.setAttribute("data-sonner-toaster", "");
-  // list-style: none strips the list/listitem semantics on WebKit, so restore them explicitly
+  // list-style: none strips the list/listitem semantics on WebKit, so restore them explicitly —
+  // the matching role="listitem" is set on each toast in toast.ts
   toaster.setAttribute("role", "list");
   toaster.setAttribute("tabindex", "-1");
 

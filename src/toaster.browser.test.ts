@@ -43,9 +43,11 @@ it("keeps the list semantics WebKit strips with list-style: none", async () => {
   const list = shadow().querySelector("ol")!;
   // explicit role: `list-style: none` drops the implicit list semantics on WebKit
   expect(list.getAttribute("role")).toBe("list");
-  // the items rely on the implicit `listitem` role of <li>, which this asserts stays intact
   expect(toasts()[0].tagName).toBe("LI");
   expect(toasts()[0].parentElement).toBe(list);
+  // explicit too: these <li> are `display: flex`, and a non-list-item display drops the implicit
+  // `listitem` role on WebKit even when the parent carries role="list"
+  expect(toasts()[0].getAttribute("role")).toBe("listitem");
 });
 
 it("inserts the title as plain text unless titleAsHtml is set", async () => {
