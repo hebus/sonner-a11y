@@ -42,6 +42,10 @@ jobs:
                   NEXT_PUBLIC_SITE_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}
 
             - uses: actions/configure-pages@v5
+              with:
+                  # turn Pages on if it is not already, instead of failing with a 404 the way the
+                  # first run did: the workflow landed on main before Pages had been enabled
+                  enablement: true
 
             - uses: actions/upload-pages-artifact@v3
               with:
