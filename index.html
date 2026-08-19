@@ -1,112 +1,166 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>sonner-a11y — accessibility test bench</title>
-        <style>
-            :root { color-scheme: light dark; }
-            body { margin: 0; padding: 2rem; font-family: "Trebuchet MS", system-ui, sans-serif; line-height: 1.5; }
-            h1 { font-size: 1.25rem; }
-            fieldset { margin: 0 0 1rem; border: 1px solid #ccc; border-radius: 8px; padding: 1rem; }
-            legend { font-weight: 600; padding: 0 .35rem; }
-            button { font: inherit; margin: 0 .35rem .35rem 0; border: 1px solid #888; border-radius: 6px; background: #f4f4f4; padding: .4rem .7rem; cursor: pointer; }
-            button:focus-visible { outline: 2px solid #05f; outline-offset: 2px; }
-            kbd { border: 1px solid #bbb; border-radius: 4px; background: #eee; padding: 0 .3rem; font-size: .85em; }
-        </style>
-    </head>
-    <body>
-        <h1>sonner-a11y — accessibility test bench</h1>
-        <p>
-            Shortcut: <kbd>Alt</kbd>+<kbd>T</kbd> focuses the most recent toast. Then <kbd>↑</kbd>/<kbd>↓</kbd> to move between them,
-            <kbd>Delete</kbd> to dismiss, <kbd>Esc</kbd> to return to the trigger.
-        </p>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>sonner-a11y — accessibility test bench</title>
+    <style>
+      :root {
+        color-scheme: light dark;
+      }
+      body {
+        margin: 0;
+        padding: 2rem;
+        font-family: "Trebuchet MS", system-ui, sans-serif;
+        line-height: 1.5;
+      }
+      h1 {
+        font-size: 1.25rem;
+      }
+      fieldset {
+        margin: 0 0 1rem;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        padding: 1rem;
+      }
+      legend {
+        font-weight: 600;
+        padding: 0 0.35rem;
+      }
+      button {
+        font: inherit;
+        margin: 0 0.35rem 0.35rem 0;
+        border: 1px solid #888;
+        border-radius: 6px;
+        background: #f4f4f4;
+        padding: 0.4rem 0.7rem;
+        cursor: pointer;
+      }
+      button:focus-visible {
+        outline: 2px solid #05f;
+        outline-offset: 2px;
+      }
+      kbd {
+        border: 1px solid #bbb;
+        border-radius: 4px;
+        background: #eee;
+        padding: 0 0.3rem;
+        font-size: 0.85em;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>sonner-a11y — accessibility test bench</h1>
+    <p>
+      Shortcut: <kbd>Alt</kbd>+<kbd>T</kbd> focuses the most recent toast. Then <kbd>↑</kbd>/<kbd
+        >↓</kbd
+      >
+      to move between them, <kbd>Delete</kbd> to dismiss, <kbd>Esc</kbd> to return to the trigger.
+    </p>
 
-        <fieldset>
-            <legend>Types</legend>
-            <button data-act="default">default</button>
-            <button data-act="success">success</button>
-            <button data-act="error">error (assertive)</button>
-            <button data-act="info">info</button>
-            <button data-act="warning">warning</button>
-            <button data-act="description">with description</button>
-        </fieldset>
+    <fieldset>
+      <legend>Types</legend>
+      <button data-act="default">default</button>
+      <button data-act="success">success</button>
+      <button data-act="error">error (assertive)</button>
+      <button data-act="info">info</button>
+      <button data-act="warning">warning</button>
+      <button data-act="description">with description</button>
+    </fieldset>
 
-        <fieldset>
-            <legend>Interactive</legend>
-            <button data-act="action">with action</button>
-            <button data-act="cancel">with cancel</button>
-            <button data-act="close">closeButton</button>
-            <button data-act="persistent">persistent (duration 0)</button>
-            <button data-act="promise">promise (2s)</button>
-        </fieldset>
+    <fieldset>
+      <legend>Interactive</legend>
+      <button data-act="action">with action</button>
+      <button data-act="cancel">with cancel</button>
+      <button data-act="close">closeButton</button>
+      <button data-act="persistent">persistent (duration 0)</button>
+      <button data-act="promise">promise (2s)</button>
+    </fieldset>
 
-        <fieldset>
-            <legend>Edge cases</legend>
-            <button data-act="stack">5 toasts (visibleToasts 3)</button>
-            <button data-act="same">same message ×2</button>
-            <button data-act="rich">richColors</button>
-            <button data-act="polite-error">error with important:false</button>
-            <button data-act="html">titleAsHtml</button>
-            <button data-act="translated">translated labels</button>
-            <button data-act="dismiss">dismiss all</button>
-        </fieldset>
+    <fieldset>
+      <legend>Edge cases</legend>
+      <button data-act="stack">5 toasts (visibleToasts 3)</button>
+      <button data-act="same">same message ×2</button>
+      <button data-act="rich">richColors</button>
+      <button data-act="polite-error">error with important:false</button>
+      <button data-act="html">titleAsHtml</button>
+      <button data-act="translated">translated labels</button>
+      <button data-act="dismiss">dismiss all</button>
+    </fieldset>
 
-        <p><a href="https://example.com">Link after the buttons</a> — to check the tab order.</p>
+    <p><a href="https://example.com">Link after the buttons</a> — to check the tab order.</p>
 
-        <script type="module">
-            import toast from '/src/index.ts';
+    <script type="module">
+      import toast from "/src/index.ts";
 
-            // warms the live region up before the first toast
-            toast.config({ closeButton: false });
+      // warms the live region up before the first toast
+      toast.config({ closeButton: false });
 
-            const acts = {
-                default: () => toast('File saved'),
-                success: () => toast.success('Payment accepted'),
-                error: () => toast.error('Payment failed'),
-                info: () => toast.info('A new version is available'),
-                warning: () => toast.warning('You are close to your quota'),
-                description: () => toast.error('Payment failed', { description: 'The card was declined by the bank.' }),
-                action: () => toast('Message archived', { action: { label: 'Undo', onClick: () => toast.success('Restored') } }),
-                cancel: () => toast('Delete this folder?', { action: { label: 'Cancel', cancel: true, onClick: () => {} } }),
-                close: () => toast.success('With a close button', { closeButton: true }),
-                persistent: () => toast('Persistent toast', { duration: 0, closeButton: true }),
-                promise: () =>
-                    toast.promise(new Promise(r => setTimeout(r, 2000)), {
-                        loading: 'Saving…',
-                        success: 'Saved',
-                        error: 'Failed',
-                    }),
-                stack: () => [1, 2, 3, 4, 5].forEach(i => toast(`Toast number ${i}`)),
-                same: () => {
-                    toast.error('Failed');
-                    setTimeout(() => toast.error('Failed'), 1200);
+      const acts = {
+        default: () => toast("File saved"),
+        success: () => toast.success("Payment accepted"),
+        error: () => toast.error("Payment failed"),
+        info: () => toast.info("A new version is available"),
+        warning: () => toast.warning("You are close to your quota"),
+        description: () =>
+          toast.error("Payment failed", { description: "The card was declined by the bank." }),
+        action: () =>
+          toast("Message archived", {
+            action: { label: "Undo", onClick: () => toast.success("Restored") },
+          }),
+        cancel: () =>
+          toast("Delete this folder?", {
+            action: { label: "Cancel", cancel: true, onClick: () => {} },
+          }),
+        close: () => toast.success("With a close button", { closeButton: true }),
+        persistent: () => toast("Persistent toast", { duration: 0, closeButton: true }),
+        promise: () =>
+          toast.promise(new Promise((r) => setTimeout(r, 2000)), {
+            loading: "Saving…",
+            success: "Saved",
+            error: "Failed",
+          }),
+        stack: () => [1, 2, 3, 4, 5].forEach((i) => toast(`Toast number ${i}`)),
+        same: () => {
+          toast.error("Failed");
+          setTimeout(() => toast.error("Failed"), 1200);
+        },
+        rich: () => {
+          toast.config({ toastOptions: { richColors: true } });
+          ["success", "error", "info", "warning"].forEach((t) => toast[t](`richColors ${t}`));
+        },
+        "polite-error": () => toast.error("Error announced politely", { important: false }),
+        html: () => toast("<b>bold</b> and <i>italic</i>", { titleAsHtml: true }),
+        // the labels stay in French on purpose: this button is what exercises `a11y.labels`
+        translated: () => {
+          toast.config({
+            a11y: {
+              labels: {
+                region: "Notifications",
+                close: "Fermer la notification",
+                action: "Action",
+                types: {
+                  success: "Succès",
+                  error: "Erreur",
+                  info: "Information",
+                  warning: "Avertissement",
+                  loading: "Chargement",
                 },
-                rich: () => {
-                    toast.config({ toastOptions: { richColors: true } });
-                    ['success', 'error', 'info', 'warning'].forEach(t => toast[t](`richColors ${t}`));
-                },
-                'polite-error': () => toast.error('Error announced politely', { important: false }),
-                html: () => toast('<b>bold</b> and <i>italic</i>', { titleAsHtml: true }),
-                // the labels stay in French on purpose: this button is what exercises `a11y.labels`
-                translated: () => {
-                    toast.config({
-                        a11y: {
-                            labels: {
-                                region: 'Notifications',
-                                close: 'Fermer la notification',
-                                action: 'Action',
-                                types: { success: 'Succès', error: 'Erreur', info: 'Information', warning: 'Avertissement', loading: 'Chargement' },
-                            },
-                        },
-                    });
-                    toast.error('Translated labels', { description: 'The prefix read out is « Erreur ».', closeButton: true });
-                },
-                dismiss: () => toast.dismiss(),
-            };
+              },
+            },
+          });
+          toast.error("Translated labels", {
+            description: "The prefix read out is « Erreur ».",
+            closeButton: true,
+          });
+        },
+        dismiss: () => toast.dismiss(),
+      };
 
-            document.querySelectorAll('button[data-act]').forEach(b => b.addEventListener('click', () => acts[b.dataset.act]()));
-            window.toast = toast;
-        </script>
-    </body>
+      document
+        .querySelectorAll("button[data-act]")
+        .forEach((b) => b.addEventListener("click", () => acts[b.dataset.act]()));
+      window.toast = toast;
+    </script>
+  </body>
 </html>
