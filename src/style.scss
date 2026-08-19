@@ -1,4 +1,3 @@
-html[dir='ltr'],
 [data-sonner-toaster][dir='ltr'] {
     --toast-icon-margin-start: -3px;
     --toast-icon-margin-end: 4px;
@@ -11,7 +10,6 @@ html[dir='ltr'],
     --toast-close-button-transform: translate(-35%, -35%);
 }
 
-html[dir='rtl'],
 [data-sonner-toaster][dir='rtl'] {
     --toast-icon-margin-start: 4px;
     --toast-icon-margin-end: -3px;
@@ -34,19 +32,19 @@ html[dir='rtl'],
 
     --success-bg: hsl(143, 85%, 96%);
     --success-border: hsl(145, 92%, 87%);
-    --success-text: hsl(140, 100%, 27%);
+    --success-text: hsl(140, 100%, 25%);
 
     --info-bg: hsl(208, 100%, 97%);
     --info-border: hsl(221, 91%, 93%);
-    --info-text: hsl(210, 92%, 45%);
+    --info-text: hsl(210, 92%, 42%);
 
     --warning-bg: hsl(49, 100%, 97%);
     --warning-border: hsl(49, 91%, 84%);
-    --warning-text: hsl(31, 92%, 45%);
+    --warning-text: hsl(31, 92%, 35%);
 
     --error-bg: hsl(359, 100%, 97%);
     --error-border: hsl(359, 100%, 94%);
-    --error-text: hsl(360, 100%, 45%);
+    --error-text: hsl(360, 100%, 42%);
 }
 
 [data-sonner-toaster][data-sonner-theme='dark'],
@@ -120,6 +118,7 @@ html[dir='rtl'],
     transition:
         transform 0.4s,
         opacity 0.4s,
+        visibility 0.4s,
         height 0.4s;
     box-sizing: border-box;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -147,8 +146,11 @@ html[dir='rtl'],
         opacity: 0;
     }
 
+    // beyond visibleToasts: visibility removes it from the a11y tree, the tab order and hit-testing,
+    // and it transitions (visible -> hidden only flips at the end, hidden -> visible flips at once)
     &[data-state='invisible'] {
         transform: translateY(calc(var(--lift) * var(--offset, 0px)));
+        visibility: hidden;
         opacity: 0;
     }
 
@@ -193,32 +195,65 @@ html[dir='rtl'],
         [data-description] {
             color: var(--normal-text2);
             font-weight: 400;
-            line-height: 1.4;
+            line-height: 1.5;
         }
     }
 
+    // a real <button>: the declarations below neutralise the UA stylesheet so the rendering is unchanged
     [data-button] {
         display: flex;
         flex-shrink: 0;
         align-items: center;
+        appearance: none;
+        -webkit-appearance: none;
         cursor: pointer;
+        box-sizing: border-box;
         margin-left: auto;
-        outline: 0;
         border: none;
         border-radius: 4px;
         background: var(--normal-text);
-        padding-right: 8px;
-        padding-left: 8px;
+        padding: 0 8px;
         height: 24px;
         color: var(--normal-bg);
         font-weight: 500;
         font-size: 12px;
+        line-height: normal;
+        // the UA hardcodes these three, which blocks inheritance from the host page
+        font-family: inherit;
+        letter-spacing: inherit;
+        text-transform: inherit;
 
         &[data-cancel] {
             background: var(--normal-cancel-bg);
             color: var(--normal-text);
         }
+
+        // offset onto the toast background, where the contrast is high
+        &:focus-visible {
+            outline: 2px solid var(--normal-text);
+            outline-offset: 2px;
+        }
     }
+}
+
+// visually hidden, still exposed to assistive technologies.
+// position: absolute is required: [data-content] is a flex container with a gap, so an in-flow
+// child would add 2px to every toast and shift the whole stack.
+[data-sr-only] {
+    position: absolute;
+    clip-path: inset(50%);
+    border: 0;
+    padding: 0;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+// the toast is focusable, so it needs its own focus ring
+[data-sonner-toast]:focus-visible {
+    outline: 2px solid var(--normal-text);
+    outline-offset: 2px;
 }
 
 // position
@@ -372,15 +407,20 @@ html[dir='rtl'],
         background: var(--gray2);
     }
 
-    &:focus-visible {
-        box-shadow:
-            0px 4px 12px rgba(0, 0, 0, 0.1),
-            0 0 0 2px rgba(0, 0, 0, 0.2);
+    // enlarges the hit area to 24x24 CSS px (WCAG 2.5.8) without changing the visuals
+    &::before {
+        position: absolute;
+        inset: -2px;
+        content: '';
     }
-}
 
-[data-sonner-toast] [data-close-button='false'] {
-    display: none;
+    // outline rather than box-shadow: the former is forced to CanvasText in forced-colors mode,
+    // the latter is not painted at all, and rgba(0,0,0,0.2) only reached 1.6:1
+    &:focus-visible {
+        outline: 2px solid var(--gray12);
+        outline-offset: 2px;
+        box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    }
 }
 
 [data-sonner-toaster][data-sonner-theme='dark'] [data-close-button='true'] {
@@ -391,6 +431,10 @@ html[dir='rtl'],
     &:hover {
         border-color: var(--normal-border-hover);
         background: var(--normal-bg-hover);
+    }
+
+    &:focus-visible {
+        outline-color: var(--normal-text);
     }
 }
 
@@ -514,5 +558,75 @@ html[dir='rtl'],
 
     100% {
         transform: rotate(360deg);
+    }
+}
+
+// Media queries live at the end of the file: they carry no extra specificity, so their position
+// is what makes them win over the rules above.
+
+@media (prefers-reduced-motion: reduce) {
+    [data-sonner-toaster] {
+        transition: none;
+    }
+
+    // the opacity cross-fade stays (it is not a vestibular trigger, and the visibility switch above
+    // relies on it); the translation and the height animation go
+    [data-sonner-toast] {
+        transition:
+            opacity 0.15s linear,
+            visibility 0.15s linear;
+    }
+
+    [data-sonner-toast] [data-icon] > svg {
+        animation: none;
+    }
+
+    [data-sonner-toaster][data-expand='false'] [data-sonner-toast]:not(:last-child) > * {
+        transition:
+            opacity 0.15s linear,
+            visibility 0.15s linear;
+    }
+
+    // the loading indicator is essential status information, so it keeps animating — but as an
+    // opacity pulse instead of a rotation. `animation: none` would also empty getAnimations(),
+    // which toast.promise() reads to carry the spinner phase over to the replacing toast.
+    .sonner-loading-wrapper {
+        animation: sonner-pulse 1.6s ease-in-out infinite alternate;
+    }
+}
+
+@media (forced-colors: active) {
+    // shadows are not painted in forced-colors mode, so the 1px border carries the outline
+    [data-sonner-toast] {
+        box-shadow: none;
+    }
+
+    // border-color is forced but border-width is not: without a border the button, whose background
+    // and colour are forced to ButtonFace/ButtonText, is indistinguishable from the toast
+    [data-sonner-toast] [data-button] {
+        border: 1px solid ButtonBorder;
+    }
+
+    [data-sonner-toast] [data-close-button='true'] {
+        box-shadow: none;
+
+        &:hover {
+            background: Highlight;
+            color: HighlightText;
+        }
+    }
+
+    .sonner-loading-bar {
+        background: CanvasText;
+    }
+}
+
+@keyframes sonner-pulse {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0.45;
     }
 }
