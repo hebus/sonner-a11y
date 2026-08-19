@@ -1,0 +1,43 @@
+name: Release PR
+
+on:
+    push:
+        branches:
+            - main
+
+concurrency:
+    group: release-pr-${{ github.ref }}
+    cancel-in-progress: false
+
+permissions:
+    contents: write
+    pull-requests: write
+
+jobs:
+    version:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+              with:
+                  fetch-depth: 0
+
+            - uses: pnpm/action-setup@v4
+
+            - uses: actions/setup-node@v4
+              with:
+                  node-version: 22
+                  cache: pnpm
+
+            - run: pnpm install --frozen-lockfile
+
+            # Opens or updates the "chore: version packages" pull request while changesets are pending.
+            # Publishing is deliberately **not** done here: merging that PR only writes the version and
+            # the changelog. The release is then triggered by tagging (`pnpm release`), which publish.yml
+            # picks up to publish with OIDC provenance — so no long-lived npm token lives anywhere.
+            - uses: changesets/action@v1
+              with:
+                  version: pnpm changeset:version
+                  commit: 'chore: version packages'
+                  title: 'chore: version packages #skip-changeset'
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
