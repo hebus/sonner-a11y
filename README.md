@@ -1,12 +1,13 @@
 <div align="center">
-  <h1>🍞 Sonner for Pure JS</h1>
-  <p>An elegant toast component designed for Pure JavaScript</p>
+  <h1>🍞 Sonner-a11y</h1>
+  <p>An accessible toast component designed for Pure JavaScript</p>
 
-  [![npm version](https://img.shields.io/npm/v/sonner-js.svg?style=flat-square)](https://www.npmjs.com/package/sonner-js)
-  [![npm downloads](https://img.shields.io/npm/dm/sonner-js.svg?style=flat-square)](https://www.npmjs.com/package/sonner-js)
-  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://opensource.org/licenses/MIT)
+[![npm version](https://img.shields.io/npm/v/sonner-a11y.svg?style=flat-square)](https://www.npmjs.com/package/sonner-a11y)
+[![npm downloads](https://img.shields.io/npm/dm/sonner-a11y.svg?style=flat-square)](https://www.npmjs.com/package/sonner-a11y)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://opensource.org/licenses/MIT)
 
-  <p><em>Built on <a href="https://sonner.emilkowal.ski/">Sonner</a>, optimized for pure JavaScript environments</em></p>
+  <p><em>An accessibility-focused fork of <a href="https://github.com/huanfe1/sonner-js">sonner-js</a> by huanfei,
+  itself built on <a href="https://sonner.emilkowal.ski/">Sonner</a></em></p>
 </div>
 
 ---
@@ -20,26 +21,27 @@
 - 🔧 **Highly Customizable** - Rich configuration options
 - 🌙 **Theme Support** - Built-in light and dark themes
 - 📦 **Multi-format Support** - UMD, ESM, CommonJS formats
+- ♿ **Accessible** - Screen reader announcements, full keyboard operation, WCAG 2.2 AA
 
 ## 🚀 Quick Start
 
 ### Installation
 
 ```bash
-npm install sonner-js
+npm install sonner-a11y
 ```
 
 ### Basic Usage
 
 ```javascript
-import toast from 'sonner-js';
+import toast from 'sonner-a11y';
 
 // Simple toast
 toast('Hello World!');
 
 // Toast with description
 toast('Operation successful', {
-    description: 'Your data has been saved'
+    description: 'Your data has been saved',
 });
 ```
 
@@ -67,8 +69,8 @@ toast.warning('Please note');
 toast('Confirm action', {
     action: {
         label: 'Confirm',
-        onClick: () => console.log('User clicked confirm')
-    }
+        onClick: () => console.log('User clicked confirm'),
+    },
 });
 
 // With cancel button
@@ -76,8 +78,8 @@ toast('Confirm deletion', {
     action: {
         label: 'Cancel',
         onClick: () => console.log('User cancelled operation'),
-        cancel: true
-    }
+        cancel: true,
+    },
 });
 ```
 
@@ -89,7 +91,7 @@ const fetchData = () => fetch('/api/data');
 toast.promise(fetchData, {
     loading: 'Loading...',
     success: 'Data loaded successfully',
-    error: 'Failed to load data'
+    error: 'Failed to load data',
 });
 ```
 
@@ -113,7 +115,7 @@ toast.dismiss();
 
 ```javascript
 toast('Important notice', {
-    duration: 0  // Set to 0 for permanent display
+    duration: 0, // Set to 0 for permanent display
 });
 ```
 
@@ -122,9 +124,9 @@ toast('Important notice', {
 ### UMD Format
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/sonner-js/dist/umd/index.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sonner-a11y/dist/umd/index.min.js"></script>
 <script>
-    sonnerJS('Hello from CDN!');
+    sonnerA11y('Hello from CDN!');
 </script>
 ```
 
@@ -132,7 +134,8 @@ toast('Important notice', {
 
 ```html
 <script type="module">
-    import toast from 'https://cdn.jsdelivr.net/npm/sonner-js/+esm';
+    import toast from 'https://cdn.jsdelivr.net/npm/sonner-a11y/+esm';
+
     toast('Hello from ESM!');
 </script>
 ```
@@ -140,23 +143,123 @@ toast('Important notice', {
 ## ⚙️ Configuration Options
 
 ```javascript
-import toast from 'sonner-js';
+import toast from 'sonner-a11y';
 
 // Global configuration
 toast.config({
-    theme: 'dark',           // 'light' | 'dark'
-    position: 'top-right',   // Position
-    duration: 4000,         // Duration in milliseconds
-    closeButton: true,      // Show close button
-    richColors: true,        // Rich colors
-    expand: true,           // Expand animation
-    visibleToasts: 3,       // Number of visible toasts
-    gap: 8,                 // Toast spacing
-    offset: 16,             // Margin
-    mobileOffset: 16,       // Mobile margin
-    dir: 'ltr'              // Text direction
+    theme: 'dark', // 'light' | 'dark'
+    expand: true, // Expand animation
+    visibleToasts: 3, // Number of visible toasts
+    gap: 8, // Toast spacing
+    offset: 16, // Margin
+    mobileOffset: 16, // Mobile margin
+    dir: 'ltr', // Text direction
+    toastOptions: {
+        position: 'top-right', // Position
+        duration: 4000, // Duration in milliseconds
+        closeButton: true, // Show close button
+        richColors: true, // Rich colors
+        invert: false, // Invert the colours of the toast
+        important: 'auto', // Screen-reader politeness, see Accessibility
+        titleAsHtml: false, // Interpret `title` as HTML
+    },
 });
 ```
+
+> `toast.config()` always resets the options you do not pass back to their defaults, so pass the
+> whole configuration you want in a single call.
+
+## ♿ Accessibility
+
+Toasts are announced to screen readers, fully operable from the keyboard, and honour the user's
+motion and contrast preferences.
+
+### Keyboard
+
+| Key                                                   | Effect                                                         |
+| ----------------------------------------------------- | -------------------------------------------------------------- |
+| <kbd>Alt</kbd>+<kbd>T</kbd>                           | Move focus to the most recent toast and expand the stack       |
+| <kbd>Tab</kbd> / <kbd>Shift</kbd>+<kbd>Tab</kbd>      | Walk through the toasts and their buttons                      |
+| <kbd>↓</kbd> <kbd>→</kbd> / <kbd>↑</kbd> <kbd>←</kbd> | Next / previous toast                                          |
+| <kbd>Home</kbd> / <kbd>End</kbd>                      | First / last toast                                             |
+| <kbd>Delete</kbd> / <kbd>Backspace</kbd>              | Dismiss the focused toast (the keyboard equivalent of swiping) |
+| <kbd>Esc</kbd>                                        | Collapse the stack and return focus to where it was            |
+
+Auto-dismiss timers pause while the pointer is over the toasts, while focus is inside them, and
+while the tab is hidden. Use `duration: 0` for a toast that never closes on its own.
+
+### Screen reader announcements
+
+Announcements go through a dedicated live region kept in the light DOM, outside the shadow root.
+Errors interrupt (`aria-live="assertive"`), everything else is announced politely. Override it per
+toast with `important`:
+
+```javascript
+toast.error('Payment failed', { important: false }); // announce politely
+toast('Build finished', { important: true }); // interrupt
+```
+
+The severity is also carried as text for screen readers, since an icon and a colour alone are not
+perceivable (“_Error. Payment failed. Card declined._”).
+
+### Translating the labels
+
+Defaults are in English. Everything a screen reader reads can be replaced:
+
+```javascript
+toast.config({
+    a11y: {
+        hotkey: ['altKey', 'KeyN'], // modifier properties and/or KeyboardEvent.code values
+        labels: {
+            region: 'Notifications', // `{hotkey}` is substituted, otherwise appended in parentheses
+            close: 'Fermer la notification',
+            action: 'Action',
+            types: {
+                success: 'Succès',
+                error: 'Erreur',
+                info: 'Information',
+                warning: 'Avertissement',
+                loading: 'Chargement',
+            },
+        },
+    },
+});
+```
+
+Per toast, `typeLabel` overrides the severity label:
+
+```javascript
+toast.error('HTTP 502', { typeLabel: 'Erreur serveur' });
+```
+
+### Other `a11y` options
+
+| Option                  | Default                   | Effect                                                           |
+| ----------------------- | ------------------------- | ---------------------------------------------------------------- |
+| `announce`              | `true`                    | Announce toasts through the live region                          |
+| `announceClearDelay`    | `1000`                    | How long the announced text stays in the region, in ms           |
+| `hotkey`                | `['altKey', 'KeyT']`      | Key combination that focuses the most recent toast               |
+| `pauseOnHover`          | `true`                    | Pause the timers while the pointer is over the toasts            |
+| `pauseOnFocus`          | `true`                    | Pause the timers while focus is inside a toast                   |
+| `pauseOnDocumentHidden` | `true`                    | Pause the timers while the tab is hidden                         |
+| `dismissOnEscape`       | `false`                   | Make <kbd>Esc</kbd> dismiss the focused toast instead of leaving |
+| `dismissKeys`           | `['Delete', 'Backspace']` | Keys that dismiss the focused toast (`[]` disables it)           |
+
+### Differences from Sonner (React)
+
+- Toasts carry no `aria-live` or `role="status"`: since this port renders into a shadow root whose
+  container is created and destroyed on demand, a live region there is not reliably announced. A
+  single dedicated region in the light DOM is used instead, which also rules out double announcements.
+- `toast.error` interrupts by default; Sonner only looks at `important`.
+- The hotkey focuses the most recent toast rather than the list, so the message is read straight away.
+- <kbd>Esc</kbd> also restores focus to the element that had it before.
+
+### Notes
+
+- The toast title is inserted as **plain text**. Pass `titleAsHtml: true` to opt back into HTML —
+  the caller is then responsible for sanitising it.
+- A fixed-position toast can cover the element that currently has focus (WCAG 2.4.11). If that
+  matters for your layout, raise `offset` or use a `top-*` position.
 
 ## 📄 License
 
