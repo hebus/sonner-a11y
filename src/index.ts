@@ -1,4 +1,4 @@
-import { setConfig } from './config';
+import { resetConfig, setConfig } from './config';
 import { addToast, dismissToast } from './toast';
 import { ExternalToast, PromiseData, PromiseT } from './types';
 
@@ -41,5 +41,6 @@ toast.loading = (message: string, options?: ExternalToast) => addToast({ type: '
 toast.dismiss = dismissToast;
 toast.promise = promise;
 toast.config = setConfig;
+toast.resetConfig = resetConfig;
 
 export default toast;

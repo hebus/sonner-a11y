@@ -166,8 +166,8 @@ toast.config({
 });
 ```
 
-> `toast.config()` always resets the options you do not pass back to their defaults, so pass the
-> whole configuration you want in a single call.
+> `toast.config()` merges into the current configuration, so you can call it more than once and only
+> pass what changes. Use `toast.resetConfig()` to go back to the shipped defaults.
 
 ## ♿ Accessibility
 

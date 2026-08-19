@@ -60,21 +60,32 @@ export function registerConfigUpdateCallback(callback: () => void) {
     configUpdateCallback = callback;
 }
 
+/**
+ * Merges into the current configuration. Spreading `defaultConfig` instead would reset every option
+ * the caller did not pass, so a second partial call anywhere in the application silently undid the
+ * first one — losing the theme, the position or a set of translated labels.
+ */
 export function setConfig(userConfig: ToasterType) {
     config = {
-        ...defaultConfig,
+        ...config,
         ...userConfig,
-        toastOptions: { ...defaultConfig.toastOptions, ...userConfig.toastOptions },
+        toastOptions: { ...config.toastOptions, ...userConfig.toastOptions },
         a11y: {
-            ...defaultConfig.a11y,
+            ...config.a11y,
             ...userConfig.a11y,
             labels: {
-                ...defaultConfig.a11y.labels,
+                ...config.a11y.labels,
                 ...userConfig.a11y?.labels,
-                types: { ...defaultConfig.a11y.labels.types, ...userConfig.a11y?.labels?.types },
+                types: { ...config.a11y.labels.types, ...userConfig.a11y?.labels?.types },
             },
         },
     };
+    configUpdateCallback?.();
+}
+
+/** Back to the shipped defaults, for the callers that relied on setConfig resetting everything. */
+export function resetConfig() {
+    config = { ...defaultConfig };
     configUpdateCallback?.();
 }
 
