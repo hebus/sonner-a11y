@@ -1,0 +1,37 @@
+name: Changeset Check
+
+on:
+    pull_request:
+        branches:
+            - main
+        # `edited` ne fait pas partie du jeu par défaut, et sans lui l'échappatoire que ce job
+        # annonce dans son propre message d'erreur ne peut pas fonctionner : ajouter
+        # `#skip-changeset` au titre ne déclencherait rien, et relancer le run à la main ne sert
+        # à rien non plus — un re-run rejoue le payload d'origine, titre compris.
+        types: [opened, synchronize, reopened, edited]
+
+jobs:
+    changeset:
+        # Bypass pour les PR docs/CI : ajouter `#skip-changeset` dans le TITRE de la PR.
+        # Sensible à la casse.
+        # La PR « Version Packages » (branche changeset-release/main) est aussi exclue :
+        # elle ne contient légitimement aucun changeset (ils viennent d'être consommés).
+        if: ${{ !contains(github.event.pull_request.title, '#skip-changeset') && github.head_ref != 'changeset-release/main' }}
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+              with:
+                  fetch-depth: 0
+
+            - name: Verify a changeset is present
+              run: |
+                  git fetch --no-tags origin "${{ github.base_ref }}"
+                  ADDED=$(git diff --name-only --diff-filter=A \
+                    "origin/${{ github.base_ref }}...HEAD" -- '.changeset/*.md' \
+                    | grep -v 'README.md' || true)
+                  if [ -z "$ADDED" ]; then
+                    echo "::error::Aucun changeset dans cette PR. Lance 'pnpm changeset' pour en créer un, ou ajoute '#skip-changeset' au titre de la PR (docs/CI uniquement)."
+                    exit 1
+                  fi
+                  echo "Changeset(s) détecté(s):"
+                  echo "$ADDED"

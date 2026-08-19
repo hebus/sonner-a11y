@@ -261,6 +261,37 @@ toast.error('HTTP 502', { typeLabel: 'Erreur serveur' });
 - A fixed-position toast can cover the element that currently has focus (WCAG 2.4.11). If that
   matters for your layout, raise `offset` or use a `top-*` position.
 
+## 🚀 Releasing
+
+Version numbers are managed by [Changesets](https://github.com/changesets/changesets) — never edit the
+`version` field by hand.
+
+Every pull request that changes the published package must ship a changeset describing its intent:
+
+```bash
+pnpm changeset          # pick patch / minor / major, write the summary
+pnpm changeset:status   # what is pending
+```
+
+The summary lands verbatim in `CHANGELOG.md`, so write it for the consumer: what they can now do, in
+the present tense. For a docs- or CI-only pull request, add `#skip-changeset` to the **title** instead.
+
+Once merged into `main`, a `chore: version packages` pull request is opened (or updated) with the
+version bump and the changelog entry. Merging it releases nothing on its own.
+
+**CI never publishes.** Publishing runs from a real machine, so the tarball that reaches npmjs is the
+one that was verified locally, and no long-lived npm token has to live in CI:
+
+```bash
+pnpm release:dry        # run every check, publish nothing
+pnpm release            # publish to npmjs, then tag <name>@<version>
+```
+
+The script refuses to publish a dirty tree, a branch other than `main`, a `main` out of sync with the
+remote, or a version whose sources changed after Changesets set it — otherwise npm, the changelog and
+git would describe different trees. A version already on npm is a no-op, not an error, and the tag is
+only pushed once the publish succeeded.
+
 ## 📄 License
 
 MIT License - see [LICENSE](LICENSE) file for details.
