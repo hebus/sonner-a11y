@@ -1,0 +1,79 @@
+name: Accessibility issue
+description: Something is unusable or misannounced with a screen reader, a keyboard, or a display preference
+labels: ["a11y", "bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        An accessibility report is only actionable if we can reproduce what you heard or saw. The
+        assistive technology, its version and the browser matter more than anything else here — the
+        same page behaves differently across NVDA + Firefox and VoiceOver + Safari.
+  - type: textarea
+    id: what-happens
+    attributes:
+      label: What happens
+      description: What was announced, focused or rendered, and what you expected instead.
+      placeholder: |
+        Announced: "Event created"
+        Expected: the severity first, then the title — "Success, Event created"
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Screen reader announcement
+        - Keyboard navigation or focus
+        - Forced colors / high contrast
+        - Reduced motion
+        - Contrast or visual sizing
+        - Semantics (roles, names, states)
+        - Other
+    validations:
+      required: true
+  - type: input
+    id: assistive-tech
+    attributes:
+      label: Assistive technology and version
+      description: Leave empty only if the issue does not involve one (keyboard-only, forced colors…).
+      placeholder: NVDA 2025.2 / VoiceOver on macOS 15.3 / TalkBack 15
+  - type: input
+    id: browser
+    attributes:
+      label: Browser and version
+      placeholder: Firefox 141 / Safari 18.4 / Chrome 139
+    validations:
+      required: true
+  - type: input
+    id: os
+    attributes:
+      label: Operating system
+      placeholder: Windows 11 / macOS 15.3 / Android 16
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: sonner-a11y version
+      placeholder: 1.0.0
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: How to reproduce
+      description: |
+        The options you passed, and the steps. `pnpm dev` in this repository serves a test bench at
+        `index.html` — if you can reproduce it there, say which button.
+      render: js
+      placeholder: |
+        toast.error("Payment failed", { important: false, closeButton: true });
+    validations:
+      required: true
+  - type: input
+    id: wcag
+    attributes:
+      label: WCAG criterion or ARIA rule involved
+      description: If you know which one. Not required — a clear description is worth more than a wrong reference.
+      placeholder: 4.1.3 Status Messages

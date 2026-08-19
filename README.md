@@ -251,6 +251,15 @@ toast.error("HTTP 502", { typeLabel: "Erreur serveur" });
 - A fixed-position toast can cover the element that currently has focus (WCAG 2.4.11). If that
   matters for your layout, raise `offset` or use a `top-*` position.
 
+## 🤝 Contributing
+
+Bug reports, accessibility reports and pull requests are welcome. Start with
+[CONTRIBUTING.md](CONTRIBUTING.md): it covers the test bench served by `pnpm dev`, how to verify a
+change with a screen reader and a keyboard, and the invariants in the code that are load-bearing.
+
+By participating you agree to the [Code of Conduct](CODE_OF_CONDUCT.md). To report a vulnerability,
+see [SECURITY.md](SECURITY.md).
+
 ## 🚀 Releasing
 
 Version numbers are managed by [Changesets](https://github.com/changesets/changesets) — never edit the
