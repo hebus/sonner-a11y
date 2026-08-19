@@ -232,6 +232,11 @@ export function addToast(options: ToastType) {
     } else {
         toast.setAttribute('data-state', 'created');
         toaster.appendChild(toast);
+        // Measured here, while the toast is still :last-child and its height is therefore not yet
+        // constrained by the collapsed-stack rules. assignOffset only ever measures the front toast,
+        // so a batch of toasts created in one task would leave every toast but the last without an
+        // --init-height, and the offsets computed from it would come out as NaN.
+        toast.style.setProperty('--init-height', `${toast.offsetHeight}px`);
         toastMap.set(id, toast);
     }
 
