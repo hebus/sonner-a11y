@@ -20,7 +20,7 @@ export default defineConfig([
             },
             {
                 format: 'umd',
-                name: 'sonnerJS',
+                name: 'sonnerA11y',
                 file: './dist/umd/index.js',
                 sourcemap: true,
             },

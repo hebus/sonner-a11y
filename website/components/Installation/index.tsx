@@ -15,7 +15,7 @@ export const Installation = () => {
     const [copying, setCopying] = React.useState(0);
 
     const onCopy = React.useCallback(() => {
-        copy('npm install sonner-js');
+        copy('npm install sonner-a11y');
         setCopying(c => c + 1);
         setTimeout(() => {
             setCopying(c => c - 1);
@@ -26,7 +26,7 @@ export const Installation = () => {
         <div>
             <h2>Installation</h2>
             <code className={styles.code} onClick={onCopy}>
-                npm install sonner-js
+                npm install sonner-a11y
                 <button aria-label="Copy code" className={styles.copy}>
                     <MotionConfig transition={{ duration: 0.15 }}>
                         <AnimatePresence initial={false} mode="wait">
