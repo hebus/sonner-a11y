@@ -1,6 +1,6 @@
-import { config } from "./config";
-import { pauseTimers, resumeTimers } from "./timers";
-import { ToastId } from "./types";
+import { config } from "./config.js";
+import { pauseTimers, resumeTimers } from "./timers.js";
+import { ToastId } from "./types.js";
 
 const TOAST_SELECTOR = "[data-sonner-toast]";
 

@@ -3,7 +3,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 // The module keeps the timer map and the pause reasons at module scope, so every test gets a fresh
 // copy through a dynamic import after resetModules().
 async function loadTimers() {
-  return import("./timers");
+  return import("./timers.js");
 }
 
 beforeEach(() => {

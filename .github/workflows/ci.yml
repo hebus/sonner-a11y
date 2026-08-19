@@ -35,3 +35,8 @@ jobs:
 
       # also proves the declarations still emit, since `build` runs tsc after Vite
       - run: pnpm build
+
+      # packs the tarball, installs it into a throwaway project and type-checks a caller against it,
+      # so a declaration that hides part of the API fails here rather than in a consumer's repo
+      - name: Validate the published package
+        run: pnpm check:package

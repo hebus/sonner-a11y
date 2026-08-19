@@ -6,7 +6,7 @@ import {
   resetConfig,
   resolvePoliteness,
   setConfig,
-} from "./config";
+} from "./config.js";
 
 describe("setConfig", () => {
   beforeEach(() => {

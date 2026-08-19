@@ -4,12 +4,11 @@ export default defineConfig({
   build: {
     lib: {
       entry: "src/index.ts",
-      // Explicit: the default is ['es', 'umd'], and UMD was dropped in 2.0.0.
-      formats: ["es", "cjs"],
-      // `.mjs`/`.cjs` rather than a `type: module` flag plus bare `.js`: the extension alone
-      // tells Node how to parse each bundle, and the package stays CJS-flavoured so the
-      // extensionless relative imports inside the emitted `.d.ts` files keep resolving.
-      fileName: (format) => (format === "cjs" ? "index.cjs" : "index.mjs"),
+      // ESM only: the library drives `document`, `window` and a shadow root, so it has no use
+      // outside a browser, and a dual build cannot hand correct types to both module systems
+      // from one declaration file (`attw` reports it as masquerading).
+      formats: ["es"],
+      fileName: () => "index.js",
     },
     // Matches the previous Rollup output, and beats the default minifier here (8.13 vs 8.80 kB gzip).
     minify: "terser",

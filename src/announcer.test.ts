@@ -8,7 +8,7 @@ const TWO_FRAMES = 32;
 async function loadAnnouncer() {
   vi.resetModules();
   document.body.innerHTML = "";
-  return { announcer: await import("./announcer"), config: await import("./config") };
+  return { announcer: await import("./announcer.js"), config: await import("./config.js") };
 }
 
 function region(politeness: "polite" | "assertive") {

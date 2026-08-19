@@ -1,12 +1,12 @@
-import { handleToastRemoved, registerToastHandlers, restoreFocus } from "./a11y";
-import { announce } from "./announcer";
-import { closeIcon } from "./assets";
-import { errorIcon, infoIcon, loadingIcon, successIcon, warningIcon } from "./assets";
-import { config, resolvePoliteness } from "./config";
-import { clearTimer, startTimer } from "./timers";
-import { assignOffset, getToaster } from "./toaster";
-import { __unsafeCreateTrustedHtml } from "./trusted-types";
-import { ToastType } from "./types";
+import { handleToastRemoved, registerToastHandlers, restoreFocus } from "./a11y.js";
+import { announce } from "./announcer.js";
+import { closeIcon } from "./assets.js";
+import { errorIcon, infoIcon, loadingIcon, successIcon, warningIcon } from "./assets.js";
+import { config, resolvePoliteness } from "./config.js";
+import { clearTimer, startTimer } from "./timers.js";
+import { assignOffset, getToaster } from "./toaster.js";
+import { __unsafeCreateTrustedHtml } from "./trusted-types.js";
+import { ToastType } from "./types.js";
 
 const icons = {
   success: successIcon,

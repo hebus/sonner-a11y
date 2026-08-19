@@ -2,6 +2,7 @@
   <h1>🍞 Sonner-a11y</h1>
   <p>An accessible toast component designed for Pure JavaScript</p>
 
+[![CI](https://img.shields.io/github/actions/workflow/status/hebus/sonner-a11y/ci.yml?branch=main&style=flat-square&label=CI)](https://github.com/hebus/sonner-a11y/actions/workflows/ci.yml)
 [![npm version](https://img.shields.io/npm/v/sonner-a11y.svg?style=flat-square)](https://www.npmjs.com/package/sonner-a11y)
 [![npm downloads](https://img.shields.io/npm/dm/sonner-a11y.svg?style=flat-square)](https://www.npmjs.com/package/sonner-a11y)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://opensource.org/licenses/MIT)
@@ -20,7 +21,7 @@
 - ⚡ **Lightweight** - Small bundle size with excellent performance
 - 🔧 **Highly Customizable** - Rich configuration options
 - 🌙 **Theme Support** - Built-in light and dark themes
-- 📦 **Dual-format Support** - ESM and CommonJS
+- 📦 **ESM** - tree-shakeable (`sideEffects: false`), consumed by every modern bundler
 - ♿ **Accessible** - Screen reader announcements, full keyboard operation, WCAG 2.2 AA
 
 ## 🚀 Quick Start

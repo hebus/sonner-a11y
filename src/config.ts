@@ -5,7 +5,7 @@ import {
   ToastOptionsType,
   ToastTypeName,
   ToasterType,
-} from "./types";
+} from "./types.js";
 
 type ResolvedA11yType = Required<Omit<A11yOptionsType, "labels">> & {
   labels: Required<Omit<A11yLabelsType, "types">> & { types: Record<ToastTypeName, string> };

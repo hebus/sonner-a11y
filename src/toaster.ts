@@ -1,7 +1,7 @@
-import { regionLabel, rememberToasterPosition, setExpandSource, wireRegion } from "./a11y";
-import { ensureAnnouncer } from "./announcer";
-import { config, registerConfigUpdateCallback } from "./config";
-import { Position } from "./types";
+import { regionLabel, rememberToasterPosition, setExpandSource, wireRegion } from "./a11y.js";
+import { ensureAnnouncer } from "./announcer.js";
+import { config, registerConfigUpdateCallback } from "./config.js";
+import { Position } from "./types.js";
 
 import style from "./style.css?inline";
 

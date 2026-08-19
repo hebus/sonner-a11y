@@ -1,6 +1,6 @@
-import { resetConfig, setConfig } from "./config";
-import { addToast, dismissToast } from "./toast";
-import { ExternalToast, PromiseData, PromiseT } from "./types";
+import { resetConfig, setConfig } from "./config.js";
+import { addToast, dismissToast } from "./toast.js";
+import { ExternalToast, PromiseData, PromiseT } from "./types.js";
 
 const promise = <ToastData>(input: PromiseT<ToastData>, data?: PromiseData<ToastData>) => {
   if (!data) return;

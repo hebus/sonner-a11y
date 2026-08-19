@@ -1,4 +1,4 @@
-import { ToastId } from "./types";
+import { ToastId } from "./types.js";
 
 export type PauseReasonType = "hover" | "focus" | "hidden";
 
