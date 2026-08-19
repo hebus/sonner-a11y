@@ -71,7 +71,7 @@ if (published.includes(version)) {
 // workflows, the demo site. package.json is deliberately absent: here the published manifest is also
 // the one carrying scripts and devDependencies, so adding a script would otherwise read as a source
 // change even though nothing a consumer receives has moved.
-const SOURCE_PATHS = ["src", "rollup.config.mjs", "tsconfig.json"];
+const SOURCE_PATHS = ["src", "vite.config.mts", "tsconfig.json", "tsconfig.build.json"];
 let versionCommit = "";
 try {
   versionCommit = capture(
