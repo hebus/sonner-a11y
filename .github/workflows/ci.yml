@@ -35,8 +35,17 @@ jobs:
 
       # the accessibility promises need a real browser: happy-dom has no layout, no `:focus-visible`,
       # no trustworthy constructable stylesheets and no `getAnimations()`
+      - name: Cache Playwright browsers
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml') }}
+          restore-keys: playwright-${{ runner.os }}-
+
+      # no `--with-deps`: the system libraries Chromium needs already ship in the ubuntu-latest
+      # image, and installing them anyway cost 820s of the first run — against 10s for the tests
       - name: Install Chromium
-        run: pnpm exec playwright install --with-deps chromium
+        run: pnpm exec playwright install chromium
 
       - name: Browser tests and coverage thresholds
         run: pnpm test:coverage
