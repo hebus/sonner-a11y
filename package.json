@@ -12,6 +12,7 @@
         "changeset:status": "changeset status",
         "changeset:version": "changeset version && pnpm install --lockfile-only",
         "release": "node scripts/release.mjs",
+        "release:dry": "node scripts/release.mjs --dry-run",
         "prepublishOnly": "pnpm build"
     },
     "repository": {

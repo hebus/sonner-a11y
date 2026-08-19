@@ -277,15 +277,20 @@ The summary lands verbatim in `CHANGELOG.md`, so write it for the consumer: what
 the present tense. For a docs- or CI-only pull request, add `#skip-changeset` to the **title** instead.
 
 Once merged into `main`, a `chore: version packages` pull request is opened (or updated) with the
-version bump and the changelog entry. Merging it releases nothing on its own — publishing is a
-separate, deliberate step:
+version bump and the changelog entry. Merging it releases nothing on its own.
+
+**CI never publishes.** Publishing runs from a real machine, so the tarball that reaches npmjs is the
+one that was verified locally, and no long-lived npm token has to live in CI:
 
 ```bash
-pnpm release            # tags the version Changesets wrote and pushes the tag
+pnpm release:dry        # run every check, publish nothing
+pnpm release            # publish to npmjs, then tag <name>@<version>
 ```
 
-The tag triggers `publish.yml`, which publishes to npm with OIDC provenance. No npm token is stored
-anywhere.
+The script refuses to publish a dirty tree, a branch other than `main`, a `main` out of sync with the
+remote, or a version whose sources changed after Changesets set it — otherwise npm, the changelog and
+git would describe different trees. A version already on npm is a no-op, not an error, and the tag is
+only pushed once the publish succeeded.
 
 ## 📄 License
 
