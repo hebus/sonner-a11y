@@ -261,6 +261,32 @@ toast.error('HTTP 502', { typeLabel: 'Erreur serveur' });
 - A fixed-position toast can cover the element that currently has focus (WCAG 2.4.11). If that
   matters for your layout, raise `offset` or use a `top-*` position.
 
+## 🚀 Releasing
+
+Version numbers are managed by [Changesets](https://github.com/changesets/changesets) — never edit the
+`version` field by hand.
+
+Every pull request that changes the published package must ship a changeset describing its intent:
+
+```bash
+pnpm changeset          # pick patch / minor / major, write the summary
+pnpm changeset:status   # what is pending
+```
+
+The summary lands verbatim in `CHANGELOG.md`, so write it for the consumer: what they can now do, in
+the present tense. For a docs- or CI-only pull request, add `#skip-changeset` to the **title** instead.
+
+Once merged into `main`, a `chore: version packages` pull request is opened (or updated) with the
+version bump and the changelog entry. Merging it releases nothing on its own — publishing is a
+separate, deliberate step:
+
+```bash
+pnpm release            # tags the version Changesets wrote and pushes the tag
+```
+
+The tag triggers `publish.yml`, which publishes to npm with OIDC provenance. No npm token is stored
+anywhere.
+
 ## 📄 License
 
 MIT License - see [LICENSE](LICENSE) file for details.
