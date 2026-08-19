@@ -1,685 +1,690 @@
-[data-sonner-toaster][dir='ltr'] {
-    --toast-icon-margin-start: -3px;
-    --toast-icon-margin-end: 4px;
-    --toast-svg-margin-start: -1px;
-    --toast-svg-margin-end: 0px;
-    --toast-button-margin-start: auto;
-    --toast-button-margin-end: 0;
-    --toast-close-button-start: 0;
-    --toast-close-button-end: unset;
-    --toast-close-button-transform: translate(-35%, -35%);
+[data-sonner-toaster][dir="ltr"] {
+  --toast-icon-margin-start: -3px;
+  --toast-icon-margin-end: 4px;
+  --toast-svg-margin-start: -1px;
+  --toast-svg-margin-end: 0px;
+  --toast-button-margin-start: auto;
+  --toast-button-margin-end: 0;
+  --toast-close-button-start: 0;
+  --toast-close-button-end: unset;
+  --toast-close-button-transform: translate(-35%, -35%);
 }
 
-[data-sonner-toaster][dir='rtl'] {
-    --toast-icon-margin-start: 4px;
-    --toast-icon-margin-end: -3px;
-    --toast-svg-margin-start: 0px;
-    --toast-svg-margin-end: -1px;
-    --toast-button-margin-start: 0;
-    --toast-button-margin-end: auto;
-    --toast-close-button-start: unset;
-    --toast-close-button-end: 0;
-    --toast-close-button-transform: translate(35%, -35%);
+[data-sonner-toaster][dir="rtl"] {
+  --toast-icon-margin-start: 4px;
+  --toast-icon-margin-end: -3px;
+  --toast-svg-margin-start: 0px;
+  --toast-svg-margin-end: -1px;
+  --toast-button-margin-start: 0;
+  --toast-button-margin-end: auto;
+  --toast-close-button-start: unset;
+  --toast-close-button-end: 0;
+  --toast-close-button-transform: translate(35%, -35%);
 }
 
-[data-sonner-toaster][data-sonner-theme='light'],
-[data-sonner-toaster][data-sonner-theme='dark'] > [data-sonner-toast][data-invert] {
-    --normal-bg: #fff;
-    --normal-border: var(--gray4);
-    --normal-text: var(--gray12);
-    --normal-text2: #3f3f3f;
-    --normal-cancel-bg: rgba(0, 0, 0, 0.08);
+[data-sonner-toaster][data-sonner-theme="light"],
+[data-sonner-toaster][data-sonner-theme="dark"] > [data-sonner-toast][data-invert] {
+  --normal-bg: #fff;
+  --normal-border: var(--gray4);
+  --normal-text: var(--gray12);
+  --normal-text2: #3f3f3f;
+  --normal-cancel-bg: rgba(0, 0, 0, 0.08);
 
-    --success-bg: hsl(143, 85%, 96%);
-    --success-border: hsl(145, 92%, 87%);
-    --success-text: hsl(140, 100%, 25%);
+  --success-bg: hsl(143, 85%, 96%);
+  --success-border: hsl(145, 92%, 87%);
+  --success-text: hsl(140, 100%, 25%);
 
-    --info-bg: hsl(208, 100%, 97%);
-    --info-border: hsl(221, 91%, 93%);
-    --info-text: hsl(210, 92%, 42%);
+  --info-bg: hsl(208, 100%, 97%);
+  --info-border: hsl(221, 91%, 93%);
+  --info-text: hsl(210, 92%, 42%);
 
-    --warning-bg: hsl(49, 100%, 97%);
-    --warning-border: hsl(49, 91%, 84%);
-    --warning-text: hsl(31, 92%, 35%);
+  --warning-bg: hsl(49, 100%, 97%);
+  --warning-border: hsl(49, 91%, 84%);
+  --warning-text: hsl(31, 92%, 35%);
 
-    --error-bg: hsl(359, 100%, 97%);
-    --error-border: hsl(359, 100%, 94%);
-    --error-text: hsl(360, 100%, 42%);
+  --error-bg: hsl(359, 100%, 97%);
+  --error-border: hsl(359, 100%, 94%);
+  --error-text: hsl(360, 100%, 42%);
 }
 
-[data-sonner-toaster][data-sonner-theme='dark'],
-[data-sonner-toaster][data-sonner-theme='light'] > [data-sonner-toast][data-invert] {
-    --normal-bg: #000;
-    --normal-bg-hover: hsl(0, 0%, 12%);
-    --normal-border: hsl(0, 0%, 20%);
-    --normal-border-hover: hsl(0, 0%, 25%);
-    --normal-text: var(--gray1);
-    --normal-text2: #e8e8e8;
-    --normal-cancel-bg: rgba(255, 255, 255, 0.3);
+[data-sonner-toaster][data-sonner-theme="dark"],
+[data-sonner-toaster][data-sonner-theme="light"] > [data-sonner-toast][data-invert] {
+  --normal-bg: #000;
+  --normal-bg-hover: hsl(0, 0%, 12%);
+  --normal-border: hsl(0, 0%, 20%);
+  --normal-border-hover: hsl(0, 0%, 25%);
+  --normal-text: var(--gray1);
+  --normal-text2: #e8e8e8;
+  --normal-cancel-bg: rgba(255, 255, 255, 0.3);
 
-    --success-bg: hsl(150, 100%, 6%);
-    --success-border: hsl(147, 100%, 12%);
-    --success-text: hsl(150, 86%, 65%);
+  --success-bg: hsl(150, 100%, 6%);
+  --success-border: hsl(147, 100%, 12%);
+  --success-text: hsl(150, 86%, 65%);
 
-    --info-bg: hsl(215, 100%, 6%);
-    --info-border: hsl(223, 43%, 17%);
-    --info-text: hsl(216, 87%, 65%);
+  --info-bg: hsl(215, 100%, 6%);
+  --info-border: hsl(223, 43%, 17%);
+  --info-text: hsl(216, 87%, 65%);
 
-    --warning-bg: hsl(64, 100%, 6%);
-    --warning-border: hsl(60, 100%, 9%);
-    --warning-text: hsl(46, 87%, 65%);
+  --warning-bg: hsl(64, 100%, 6%);
+  --warning-border: hsl(60, 100%, 9%);
+  --warning-text: hsl(46, 87%, 65%);
 
-    --error-bg: hsl(358, 76%, 10%);
-    --error-border: hsl(357, 89%, 16%);
-    --error-text: hsl(358, 100%, 81%);
-}
-
-[data-sonner-toaster] {
-    --width: 356px;
-    --gray1: hsl(0, 0%, 99%);
-    --gray2: hsl(0, 0%, 97.3%);
-    --gray3: hsl(0, 0%, 95.1%);
-    --gray4: hsl(0, 0%, 93%);
-    --gray5: hsl(0, 0%, 90.9%);
-    --gray6: hsl(0, 0%, 88.7%);
-    --gray7: hsl(0, 0%, 85.8%);
-    --gray8: hsl(0, 0%, 78%);
-    --gray9: hsl(0, 0%, 56.1%);
-    --gray10: hsl(0, 0%, 52.3%);
-    --gray11: hsl(0, 0%, 43.5%);
-    --gray12: hsl(0, 0%, 9%);
-    --border-radius: 8px;
-    --normal-bg: #fff;
+  --error-bg: hsl(358, 76%, 10%);
+  --error-border: hsl(357, 89%, 16%);
+  --error-text: hsl(358, 100%, 81%);
 }
 
 [data-sonner-toaster] {
-    position: fixed;
-    z-index: 999999999;
-    transition: transform 400ms ease;
+  --width: 356px;
+  --gray1: hsl(0, 0%, 99%);
+  --gray2: hsl(0, 0%, 97.3%);
+  --gray3: hsl(0, 0%, 95.1%);
+  --gray4: hsl(0, 0%, 93%);
+  --gray5: hsl(0, 0%, 90.9%);
+  --gray6: hsl(0, 0%, 88.7%);
+  --gray7: hsl(0, 0%, 85.8%);
+  --gray8: hsl(0, 0%, 78%);
+  --gray9: hsl(0, 0%, 56.1%);
+  --gray10: hsl(0, 0%, 52.3%);
+  --gray11: hsl(0, 0%, 43.5%);
+  --gray12: hsl(0, 0%, 9%);
+  --border-radius: 8px;
+  --normal-bg: #fff;
+}
+
+[data-sonner-toaster] {
+  position: fixed;
+  z-index: 999999999;
+  transition: transform 400ms ease;
+  box-sizing: border-box;
+  margin: 0;
+  outline: none;
+  padding: 0;
+  width: var(--width);
+  list-style: none;
+  user-select: none;
+
+  & > * {
     box-sizing: border-box;
-    margin: 0;
-    outline: none;
-    padding: 0;
-    width: var(--width);
-    list-style: none;
-    user-select: none;
-
-    & > * {
-        box-sizing: border-box;
-        border: 0 solid var(--normal-border);
-    }
+    border: 0 solid var(--normal-border);
+  }
 }
 
 [data-sonner-toast] {
-    display: flex;
-    position: absolute;
-    align-items: center;
-    gap: 6px;
-    transition:
-        transform 0.4s,
-        opacity 0.4s,
-        visibility 0.4s,
-        height 0.4s;
-    box-sizing: border-box;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    border: 1px solid var(--normal-border);
-    border-radius: var(--border-radius);
-    background-color: var(--normal-bg);
-    padding: 16px;
-    width: var(--width);
-    height: var(--init-height);
-    color: var(--normal-text);
-    font-size: 13px;
+  display: flex;
+  position: absolute;
+  align-items: center;
+  gap: 6px;
+  transition:
+    transform 0.4s,
+    opacity 0.4s,
+    visibility 0.4s,
+    height 0.4s;
+  box-sizing: border-box;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--normal-border);
+  border-radius: var(--border-radius);
+  background-color: var(--normal-bg);
+  padding: 16px;
+  width: var(--width);
+  height: var(--init-height);
+  color: var(--normal-text);
+  font-size: 13px;
 
-    &[data-state='created'] {
-        transform: translateY(calc(var(--lift) * -120%));
-        opacity: 0;
-    }
+  &[data-state="created"] {
+    transform: translateY(calc(var(--lift) * -120%));
+    opacity: 0;
+  }
 
-    &[data-state='mounted'] {
-        transform: translateY(calc(var(--lift) * var(--offset, 0px)));
-        opacity: 1;
-    }
+  &[data-state="mounted"] {
+    transform: translateY(calc(var(--lift) * var(--offset, 0px)));
+    opacity: 1;
+  }
 
-    &[data-state='deleting'] {
-        transform: translateY(calc(var(--lift) * calc(var(--offset) - var(--init-height) - var(--gap))));
-        opacity: 0;
-    }
+  &[data-state="deleting"] {
+    transform: translateY(
+      calc(var(--lift) * calc(var(--offset) - var(--init-height) - var(--gap)))
+    );
+    opacity: 0;
+  }
 
-    /* beyond visibleToasts: visibility removes it from the a11y tree, the tab order and hit-testing,
+  /* beyond visibleToasts: visibility removes it from the a11y tree, the tab order and hit-testing,
        and it transitions (visible -> hidden only flips at the end, hidden -> visible flips at once) */
-    &[data-state='invisible'] {
-        transform: translateY(calc(var(--lift) * var(--offset, 0px)));
-        visibility: hidden;
-        opacity: 0;
+  &[data-state="invisible"] {
+    transform: translateY(calc(var(--lift) * var(--offset, 0px)));
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  &:after {
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    width: 100%;
+    height: calc(var(--gap) + 1px);
+    content: "";
+  }
+
+  [data-icon] {
+    display: flex;
+    position: relative;
+    flex-shrink: 0;
+    justify-content: flex-start;
+    align-items: center;
+    margin-right: var(--toast-icon-margin-end);
+    margin-left: var(--toast-icon-margin-start);
+    width: 16px;
+    height: 16px;
+
+    & > svg {
+      flex-shrink: 0;
+      transform-origin: center;
+      animation: sonner-fade-in 300ms ease forwards;
+    }
+  }
+
+  [data-content] {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+
+    [data-title] {
+      color: inherit;
+      font-weight: 500;
+      line-height: 1.5;
     }
 
-    &:after {
-        position: absolute;
-        bottom: 100%;
-        left: 0;
-        width: 100%;
-        height: calc(var(--gap) + 1px);
-        content: '';
+    [data-description] {
+      color: var(--normal-text2);
+      font-weight: 400;
+      line-height: 1.5;
+    }
+  }
+
+  /* a real <button>: the declarations below neutralise the UA stylesheet so the rendering is unchanged */
+  [data-button] {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    appearance: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+    box-sizing: border-box;
+    margin-left: auto;
+    border: none;
+    border-radius: 4px;
+    background: var(--normal-text);
+    padding: 0 8px;
+    height: 24px;
+    color: var(--normal-bg);
+    font-weight: 500;
+    font-size: 12px;
+    line-height: normal;
+    /* the UA hardcodes these three, which blocks inheritance from the host page */
+    font-family: inherit;
+    letter-spacing: inherit;
+    text-transform: inherit;
+
+    &[data-cancel] {
+      background: var(--normal-cancel-bg);
+      color: var(--normal-text);
     }
 
-    [data-icon] {
-        display: flex;
-        position: relative;
-        flex-shrink: 0;
-        justify-content: flex-start;
-        align-items: center;
-        margin-right: var(--toast-icon-margin-end);
-        margin-left: var(--toast-icon-margin-start);
-        width: 16px;
-        height: 16px;
-
-        & > svg {
-            flex-shrink: 0;
-            transform-origin: center;
-            animation: sonner-fade-in 300ms ease forwards;
-        }
+    /* offset onto the toast background, where the contrast is high */
+    &:focus-visible {
+      outline: 2px solid var(--normal-text);
+      outline-offset: 2px;
     }
-
-    [data-content] {
-        display: flex;
-        flex-direction: column;
-        gap: 2px;
-
-        [data-title] {
-            color: inherit;
-            font-weight: 500;
-            line-height: 1.5;
-        }
-
-        [data-description] {
-            color: var(--normal-text2);
-            font-weight: 400;
-            line-height: 1.5;
-        }
-    }
-
-    /* a real <button>: the declarations below neutralise the UA stylesheet so the rendering is unchanged */
-    [data-button] {
-        display: flex;
-        flex-shrink: 0;
-        align-items: center;
-        appearance: none;
-        -webkit-appearance: none;
-        cursor: pointer;
-        box-sizing: border-box;
-        margin-left: auto;
-        border: none;
-        border-radius: 4px;
-        background: var(--normal-text);
-        padding: 0 8px;
-        height: 24px;
-        color: var(--normal-bg);
-        font-weight: 500;
-        font-size: 12px;
-        line-height: normal;
-        /* the UA hardcodes these three, which blocks inheritance from the host page */
-        font-family: inherit;
-        letter-spacing: inherit;
-        text-transform: inherit;
-
-        &[data-cancel] {
-            background: var(--normal-cancel-bg);
-            color: var(--normal-text);
-        }
-
-        /* offset onto the toast background, where the contrast is high */
-        &:focus-visible {
-            outline: 2px solid var(--normal-text);
-            outline-offset: 2px;
-        }
-    }
+  }
 }
 
 /* visually hidden, still exposed to assistive technologies.
    position: absolute is required: [data-content] is a flex container with a gap, so an in-flow
    child would add 2px to every toast and shift the whole stack. */
 [data-sr-only] {
-    position: absolute;
-    clip-path: inset(50%);
-    border: 0;
-    padding: 0;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    white-space: nowrap;
+  position: absolute;
+  clip-path: inset(50%);
+  border: 0;
+  padding: 0;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 /* the toast is focusable, so it needs its own focus ring */
 [data-sonner-toast]:focus-visible {
-    outline: 2px solid var(--normal-text);
-    outline-offset: 2px;
+  outline: 2px solid var(--normal-text);
+  outline-offset: 2px;
 }
 
 /* position */
 [data-sonner-toaster] {
-    &[data-position*='top'] {
-        --lift: 1;
-        top: var(--offset);
+  &[data-position*="top"] {
+    --lift: 1;
+    top: var(--offset);
 
-        [data-sonner-toast] {
-            top: 0;
-        }
+    [data-sonner-toast] {
+      top: 0;
     }
+  }
 
-    &[data-position*='bottom'] {
-        --lift: -1;
-        bottom: var(--offset);
+  &[data-position*="bottom"] {
+    --lift: -1;
+    bottom: var(--offset);
 
-        [data-sonner-toast] {
-            bottom: 0;
-        }
+    [data-sonner-toast] {
+      bottom: 0;
     }
+  }
 
-    &[data-position*='left'] {
-        left: var(--offset);
+  &[data-position*="left"] {
+    left: var(--offset);
 
-        [data-sonner-toast] {
-            left: 0;
-        }
+    [data-sonner-toast] {
+      left: 0;
     }
+  }
 
-    &[data-position*='right'] {
-        right: var(--offset);
+  &[data-position*="right"] {
+    right: var(--offset);
 
-        [data-sonner-toast] {
-            right: 0;
-        }
+    [data-sonner-toast] {
+      right: 0;
     }
+  }
 
-    &[data-position*='center'] {
-        left: 50%;
-        transform: translateX(-50%);
-    }
+  &[data-position*="center"] {
+    left: 50%;
+    transform: translateX(-50%);
+  }
 }
 
 @media (max-width: 600px) {
-    [data-sonner-toaster] {
-        position: fixed;
-        right: var(--mobile-offset);
-        left: var(--mobile-offset);
-        width: 100%;
+  [data-sonner-toaster] {
+    position: fixed;
+    right: var(--mobile-offset);
+    left: var(--mobile-offset);
+    width: 100%;
+  }
+
+  [data-sonner-toaster][dir="rtl"] {
+    left: calc(var(--mobile-offset) * -1);
+  }
+
+  [data-sonner-toaster] [data-sonner-toast] {
+    right: 0;
+    left: 0;
+    width: calc(100% - var(--mobile-offset) * 2);
+  }
+
+  [data-sonner-toaster] {
+    &[data-position*="top"] {
+      top: var(--mobile-offset);
     }
 
-    [data-sonner-toaster][dir='rtl'] {
-        left: calc(var(--mobile-offset) * -1);
+    &[data-position*="bottom"] {
+      bottom: var(--mobile-offset);
     }
 
-    [data-sonner-toaster] [data-sonner-toast] {
-        right: 0;
-        left: 0;
-        width: calc(100% - var(--mobile-offset) * 2);
+    &[data-position*="left"] {
+      left: var(--mobile-offset);
     }
 
-    [data-sonner-toaster] {
-        &[data-position*='top'] {
-            top: var(--mobile-offset);
-        }
-
-        &[data-position*='bottom'] {
-            bottom: var(--mobile-offset);
-        }
-
-        &[data-position*='left'] {
-            left: var(--mobile-offset);
-        }
-
-        &[data-position*='right'] {
-            right: var(--mobile-offset);
-        }
-
-        &[data-position*='center'] {
-            right: var(--mobile-offset);
-            left: var(--mobile-offset);
-            transform: none;
-        }
+    &[data-position*="right"] {
+      right: var(--mobile-offset);
     }
+
+    &[data-position*="center"] {
+      right: var(--mobile-offset);
+      left: var(--mobile-offset);
+      transform: none;
+    }
+  }
 }
 
 /* expand */
-[data-sonner-toaster][data-expand='false'] {
-    [data-sonner-toast]:not(:last-child) {
-        transform: scale(calc(1 - var(--index) * 0.05)) translateY(calc(var(--lift) * var(--gap) * var(--index)));
+[data-sonner-toaster][data-expand="false"] {
+  [data-sonner-toast]:not(:last-child) {
+    transform: scale(calc(1 - var(--index) * 0.05))
+      translateY(calc(var(--lift) * var(--gap) * var(--index)));
+  }
+
+  [data-sonner-toast]:not(:last-child) {
+    height: var(--front-height);
+
+    &[data-state="deleting"] {
+      transform: scale(calc(1 - var(--index) * 0.05));
     }
 
-    [data-sonner-toast]:not(:last-child) {
-        height: var(--front-height);
-
-        &[data-state='deleting'] {
-            transform: scale(calc(1 - var(--index) * 0.05));
-        }
-
-        & > * {
-            opacity: 0;
-            transition: opacity 0.4s;
-        }
+    & > * {
+      opacity: 0;
+      transition: opacity 0.4s;
     }
+  }
 }
 
-[data-sonner-toast][data-swiping='true'] {
-    transform: translateY(calc(var(--lift) * var(--offset, 0px))) translateY(var(--swipe-amount-y, 0)) translateX(var(--swipe-amount-x, 0));
-    transition: none;
+[data-sonner-toast][data-swiping="true"] {
+  transform: translateY(calc(var(--lift) * var(--offset, 0px))) translateY(var(--swipe-amount-y, 0))
+    translateX(var(--swipe-amount-x, 0));
+  transition: none;
 
-    &[data-state='deleting'] {
-        transform: translateY(calc(var(--lift) * var(--offset, 0px))) translateY(var(--swipe-amount-y, 0)) translateX(var(--swipe-amount-x, 0));
-        opacity: 1;
-        transition: transform 0.2s;
-    }
+  &[data-state="deleting"] {
+    transform: translateY(calc(var(--lift) * var(--offset, 0px)))
+      translateY(var(--swipe-amount-y, 0)) translateX(var(--swipe-amount-x, 0));
+    opacity: 1;
+    transition: transform 0.2s;
+  }
 
-    &::before {
-        position: fixed;
-        inset: -100vh -100vw;
-        content: '';
-    }
+  &::before {
+    position: fixed;
+    inset: -100vh -100vw;
+    content: "";
+  }
 }
 
 /* close-button */
-[data-sonner-toast] [data-close-button='true'] {
-    display: flex;
+[data-sonner-toast] [data-close-button="true"] {
+  display: flex;
+  position: absolute;
+  top: 0;
+  right: var(--toast-close-button-end);
+  left: var(--toast-close-button-start);
+  justify-content: center;
+  align-items: center;
+  transform: var(--toast-close-button-transform);
+  z-index: 1;
+  transition:
+    opacity 100ms,
+    background 200ms,
+    border-color 200ms;
+  cursor: pointer;
+  border: 1px solid var(--gray4);
+  border-radius: 50%;
+  background: var(--normal-bg);
+  padding: 0;
+  width: 20px;
+  height: 20px;
+  color: var(--gray12);
+
+  &:hover {
+    border-color: var(--gray5);
+    background: var(--gray2);
+  }
+
+  /* enlarges the hit area to 24x24 CSS px (WCAG 2.5.8) without changing the visuals */
+  &::before {
     position: absolute;
-    top: 0;
-    right: var(--toast-close-button-end);
-    left: var(--toast-close-button-start);
-    justify-content: center;
-    align-items: center;
-    transform: var(--toast-close-button-transform);
-    z-index: 1;
-    transition:
-        opacity 100ms,
-        background 200ms,
-        border-color 200ms;
-    cursor: pointer;
-    border: 1px solid var(--gray4);
-    border-radius: 50%;
-    background: var(--normal-bg);
-    padding: 0;
-    width: 20px;
-    height: 20px;
-    color: var(--gray12);
+    inset: -2px;
+    content: "";
+  }
 
-    &:hover {
-        border-color: var(--gray5);
-        background: var(--gray2);
-    }
-
-    /* enlarges the hit area to 24x24 CSS px (WCAG 2.5.8) without changing the visuals */
-    &::before {
-        position: absolute;
-        inset: -2px;
-        content: '';
-    }
-
-    /* outline rather than box-shadow: the former is forced to CanvasText in forced-colors mode,
+  /* outline rather than box-shadow: the former is forced to CanvasText in forced-colors mode,
        the latter is not painted at all, and rgba(0,0,0,0.2) only reached 1.6:1 */
-    &:focus-visible {
-        outline: 2px solid var(--gray12);
-        outline-offset: 2px;
-        box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-    }
+  &:focus-visible {
+    outline: 2px solid var(--gray12);
+    outline-offset: 2px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  }
 }
 
-[data-sonner-toaster][data-sonner-theme='dark'] [data-close-button='true'] {
-    border-color: var(--normal-border);
-    background: var(--normal-bg);
-    color: var(--normal-text);
+[data-sonner-toaster][data-sonner-theme="dark"] [data-close-button="true"] {
+  border-color: var(--normal-border);
+  background: var(--normal-bg);
+  color: var(--normal-text);
 
-    &:hover {
-        border-color: var(--normal-border-hover);
-        background: var(--normal-bg-hover);
-    }
+  &:hover {
+    border-color: var(--normal-border-hover);
+    background: var(--normal-bg-hover);
+  }
 
-    &:focus-visible {
-        outline-color: var(--normal-text);
-    }
+  &:focus-visible {
+    outline-color: var(--normal-text);
+  }
 }
 
 /* richColors */
 [data-sonner-toast][data-rich-colors] {
-    &[data-type='success'] {
-        border-color: var(--success-border);
-        background: var(--success-bg);
-        color: var(--success-text);
+  &[data-type="success"] {
+    border-color: var(--success-border);
+    background: var(--success-bg);
+    color: var(--success-text);
 
-        & [data-close-button='true'] {
-            border-color: var(--success-border);
-            background: var(--success-bg);
-            color: var(--success-text);
-        }
+    & [data-close-button="true"] {
+      border-color: var(--success-border);
+      background: var(--success-bg);
+      color: var(--success-text);
     }
+  }
 
-    &[data-type='info'] {
-        border-color: var(--info-border);
-        background: var(--info-bg);
-        color: var(--info-text);
+  &[data-type="info"] {
+    border-color: var(--info-border);
+    background: var(--info-bg);
+    color: var(--info-text);
 
-        & [data-close-button] {
-            border-color: var(--info-border);
-            background: var(--info-bg);
-            color: var(--info-text);
-        }
+    & [data-close-button] {
+      border-color: var(--info-border);
+      background: var(--info-bg);
+      color: var(--info-text);
     }
+  }
 
-    &[data-type='warning'] {
-        border-color: var(--warning-border);
-        background: var(--warning-bg);
-        color: var(--warning-text);
+  &[data-type="warning"] {
+    border-color: var(--warning-border);
+    background: var(--warning-bg);
+    color: var(--warning-text);
 
-        & [data-close-button] {
-            border-color: var(--warning-border);
-            background: var(--warning-bg);
-            color: var(--warning-text);
-        }
+    & [data-close-button] {
+      border-color: var(--warning-border);
+      background: var(--warning-bg);
+      color: var(--warning-text);
     }
+  }
 
-    &[data-type='error'] {
-        border-color: var(--error-border);
-        background: var(--error-bg);
-        color: var(--error-text);
+  &[data-type="error"] {
+    border-color: var(--error-border);
+    background: var(--error-bg);
+    color: var(--error-text);
 
-        & [data-close-button] {
-            border-color: var(--error-border);
-            background: var(--error-bg);
-            color: var(--error-text);
-        }
+    & [data-close-button] {
+      border-color: var(--error-border);
+      background: var(--error-bg);
+      color: var(--error-text);
     }
+  }
 }
 
 /* loading Icon */
 .sonner-loading-wrapper {
-    --size: 16px;
-    position: absolute;
-    transform-origin: 8.3px;
-    z-index: 10;
-    animation: sonner-spin 1.2s steps(12) infinite;
-    inset: 0;
+  --size: 16px;
+  position: absolute;
+  transform-origin: 8.3px;
+  z-index: 10;
+  animation: sonner-spin 1.2s steps(12) infinite;
+  inset: 0;
+  width: var(--size);
+  height: var(--size);
+
+  & .sonner-spinner {
+    position: relative;
+    top: 50%;
+    left: 50%;
     width: var(--size);
     height: var(--size);
+  }
 
-    & .sonner-spinner {
-        position: relative;
-        top: 50%;
-        left: 50%;
-        width: var(--size);
-        height: var(--size);
+  & .sonner-loading-bar {
+    position: absolute;
+    top: -3.9%;
+    left: -10%;
+    border-radius: 6px;
+    background: var(--gray11);
+    width: 24%;
+    height: 8%;
+
+    /* the 12 branches below were generated by a Sass @for loop */
+    &:nth-child(1) {
+      transform: rotate(-60deg) translate(146%);
+      opacity: 0.175;
     }
 
-    & .sonner-loading-bar {
-        position: absolute;
-        top: -3.9%;
-        left: -10%;
-        border-radius: 6px;
-        background: var(--gray11);
-        width: 24%;
-        height: 8%;
-
-        /* the 12 branches below were generated by a Sass @for loop */
-        &:nth-child(1) {
-            transform: rotate(-60deg) translate(146%);
-            opacity: 0.175;
-        }
-
-        &:nth-child(2) {
-            transform: rotate(-30deg) translate(146%);
-            opacity: 0.25;
-        }
-
-        &:nth-child(3) {
-            transform: rotate(0deg) translate(146%);
-            opacity: 0.325;
-        }
-
-        &:nth-child(4) {
-            transform: rotate(30deg) translate(146%);
-            opacity: 0.4;
-        }
-
-        &:nth-child(5) {
-            transform: rotate(60deg) translate(146%);
-            opacity: 0.475;
-        }
-
-        &:nth-child(6) {
-            transform: rotate(90deg) translate(146%);
-            opacity: 0.55;
-        }
-
-        &:nth-child(7) {
-            transform: rotate(120deg) translate(146%);
-            opacity: 0.625;
-        }
-
-        &:nth-child(8) {
-            transform: rotate(150deg) translate(146%);
-            opacity: 0.7;
-        }
-
-        &:nth-child(9) {
-            transform: rotate(180deg) translate(146%);
-            opacity: 0.775;
-        }
-
-        &:nth-child(10) {
-            transform: rotate(210deg) translate(146%);
-            opacity: 0.85;
-        }
-
-        &:nth-child(11) {
-            transform: rotate(240deg) translate(146%);
-            opacity: 0.925;
-        }
-
-        &:nth-child(12) {
-            transform: rotate(270deg) translate(146%);
-            opacity: 1;
-        }
+    &:nth-child(2) {
+      transform: rotate(-30deg) translate(146%);
+      opacity: 0.25;
     }
+
+    &:nth-child(3) {
+      transform: rotate(0deg) translate(146%);
+      opacity: 0.325;
+    }
+
+    &:nth-child(4) {
+      transform: rotate(30deg) translate(146%);
+      opacity: 0.4;
+    }
+
+    &:nth-child(5) {
+      transform: rotate(60deg) translate(146%);
+      opacity: 0.475;
+    }
+
+    &:nth-child(6) {
+      transform: rotate(90deg) translate(146%);
+      opacity: 0.55;
+    }
+
+    &:nth-child(7) {
+      transform: rotate(120deg) translate(146%);
+      opacity: 0.625;
+    }
+
+    &:nth-child(8) {
+      transform: rotate(150deg) translate(146%);
+      opacity: 0.7;
+    }
+
+    &:nth-child(9) {
+      transform: rotate(180deg) translate(146%);
+      opacity: 0.775;
+    }
+
+    &:nth-child(10) {
+      transform: rotate(210deg) translate(146%);
+      opacity: 0.85;
+    }
+
+    &:nth-child(11) {
+      transform: rotate(240deg) translate(146%);
+      opacity: 0.925;
+    }
+
+    &:nth-child(12) {
+      transform: rotate(270deg) translate(146%);
+      opacity: 1;
+    }
+  }
 }
 
 @keyframes sonner-fade-in {
-    0% {
-        transform: scale(0.8);
-        opacity: 0;
-    }
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
 
-    100% {
-        transform: scale(1);
-        opacity: 1;
-    }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 @keyframes sonner-fade-out {
-    0% {
-        transform: scale(1);
-        opacity: 1;
-    }
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
 
-    100% {
-        transform: scale(0.8);
-        opacity: 0;
-    }
+  100% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
 }
 
 @keyframes sonner-spin {
-    0% {
-        transform: rotate(0deg);
-    }
+  0% {
+    transform: rotate(0deg);
+  }
 
-    100% {
-        transform: rotate(360deg);
-    }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 /* Media queries live at the end of the file: they carry no extra specificity, so their position
    is what makes them win over the rules above. */
 
 @media (prefers-reduced-motion: reduce) {
-    [data-sonner-toaster] {
-        transition: none;
-    }
+  [data-sonner-toaster] {
+    transition: none;
+  }
 
-    /* the opacity cross-fade stays (it is not a vestibular trigger, and the visibility switch above
+  /* the opacity cross-fade stays (it is not a vestibular trigger, and the visibility switch above
        relies on it); the translation and the height animation go */
-    [data-sonner-toast] {
-        transition:
-            opacity 0.15s linear,
-            visibility 0.15s linear;
-    }
+  [data-sonner-toast] {
+    transition:
+      opacity 0.15s linear,
+      visibility 0.15s linear;
+  }
 
-    [data-sonner-toast] [data-icon] > svg {
-        animation: none;
-    }
+  [data-sonner-toast] [data-icon] > svg {
+    animation: none;
+  }
 
-    [data-sonner-toaster][data-expand='false'] [data-sonner-toast]:not(:last-child) > * {
-        transition:
-            opacity 0.15s linear,
-            visibility 0.15s linear;
-    }
+  [data-sonner-toaster][data-expand="false"] [data-sonner-toast]:not(:last-child) > * {
+    transition:
+      opacity 0.15s linear,
+      visibility 0.15s linear;
+  }
 
-    /* the loading indicator is essential status information, so it keeps animating — but as an
+  /* the loading indicator is essential status information, so it keeps animating — but as an
        opacity pulse instead of a rotation. `animation: none` would also empty getAnimations(),
        which toast.promise() reads to carry the spinner phase over to the replacing toast. */
-    .sonner-loading-wrapper {
-        animation: sonner-pulse 1.6s ease-in-out infinite alternate;
-    }
+  .sonner-loading-wrapper {
+    animation: sonner-pulse 1.6s ease-in-out infinite alternate;
+  }
 }
 
 @media (forced-colors: active) {
-    /* shadows are not painted in forced-colors mode, so the 1px border carries the outline */
-    [data-sonner-toast] {
-        box-shadow: none;
-    }
+  /* shadows are not painted in forced-colors mode, so the 1px border carries the outline */
+  [data-sonner-toast] {
+    box-shadow: none;
+  }
 
-    /* border-color is forced but border-width is not: without a border the button, whose background
+  /* border-color is forced but border-width is not: without a border the button, whose background
        and colour are forced to ButtonFace/ButtonText, is indistinguishable from the toast */
-    [data-sonner-toast] [data-button] {
-        border: 1px solid ButtonBorder;
-    }
+  [data-sonner-toast] [data-button] {
+    border: 1px solid ButtonBorder;
+  }
 
-    [data-sonner-toast] [data-close-button='true'] {
-        box-shadow: none;
+  [data-sonner-toast] [data-close-button="true"] {
+    box-shadow: none;
 
-        &:hover {
-            background: Highlight;
-            color: HighlightText;
-        }
+    &:hover {
+      background: Highlight;
+      color: HighlightText;
     }
+  }
 
-    .sonner-loading-bar {
-        background: CanvasText;
-    }
+  .sonner-loading-bar {
+    background: CanvasText;
+  }
 }
 
 @keyframes sonner-pulse {
-    0% {
-        opacity: 1;
-    }
+  0% {
+    opacity: 1;
+  }
 
-    100% {
-        opacity: 0.45;
-    }
+  100% {
+    opacity: 0.45;
+  }
 }

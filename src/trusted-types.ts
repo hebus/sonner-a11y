@@ -1,5 +1,5 @@
 function identity<T>(x: T): T {
-    return x;
+  return x;
 }
 
 /**
@@ -13,16 +13,16 @@ let policy: TrustedTypePolicy | null | undefined;
  * here or set to null if Trusted Types is not supported in the browser.
  */
 function getPolicy() {
-    if (typeof policy === 'undefined' && typeof window !== 'undefined') {
-        policy =
-            window.trustedTypes?.createPolicy('sonner-a11y', {
-                createHTML: identity,
-                createScript: identity,
-                createScriptURL: identity,
-            }) || null;
-    }
+  if (typeof policy === "undefined" && typeof window !== "undefined") {
+    policy =
+      window.trustedTypes?.createPolicy("sonner-a11y", {
+        createHTML: identity,
+        createScript: identity,
+        createScriptURL: identity,
+      }) || null;
+  }
 
-    return policy;
+  return policy;
 }
 
 /**
@@ -34,5 +34,5 @@ function getPolicy() {
  * that will cause a browser to execute a script
  */
 export function __unsafeCreateTrustedHtml(html: string): string {
-    return (getPolicy()?.createHTML(html) || html) as string;
+  return (getPolicy()?.createHTML(html) || html) as string;
 }

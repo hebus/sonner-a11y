@@ -1,70 +1,73 @@
 {
-    "name": "sonner-a11y",
-    "version": "0.0.0",
-    "packageManager": "pnpm@10.17.0",
-    "main": "./dist/index.cjs",
-    "types": "./dist/index.d.ts",
-    "scripts": {
-        "dev": "vite",
-        "build:watch": "vite build --watch",
-        "build": "vite build && tsc -p tsconfig.build.json",
-        "test": "vitest run",
-        "test:watch": "vitest",
-        "typecheck": "tsc --noEmit",
-        "format": "prettier --write .",
-        "changeset": "changeset",
-        "changeset:status": "changeset status",
-        "changeset:version": "changeset version && pnpm install --lockfile-only",
-        "release": "node scripts/release.mjs",
-        "release:dry": "node scripts/release.mjs --dry-run",
-        "prepublishOnly": "pnpm build"
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/hebus/sonner-a11y.git"
-    },
-    "exports": {
-        ".": {
-            "import": {
-                "types": "./dist/index.d.ts",
-                "default": "./dist/index.mjs"
-            },
-            "require": {
-                "types": "./dist/index.d.ts",
-                "default": "./dist/index.cjs"
-            },
-            "types": "./dist/index.d.ts"
-        }
-    },
-    "homepage": "https://github.com/hebus/sonner-a11y",
-    "bugs": "https://github.com/hebus/sonner-a11y/issues",
-    "files": [
-        "dist"
-    ],
-    "keywords": [
-        "toast",
-        "notification",
-        "a11y",
-        "accessibility",
-        "aria",
-        "wcag",
-        "screen-reader",
-        "keyboard"
-    ],
-    "author": "huanfei",
-    "license": "MIT",
-    "description": "An accessible toast component for pure JavaScript: screen-reader announcements, full keyboard operation, WCAG 2.2 AA. Fork of sonner-js.",
-    "devDependencies": {
-        "@changesets/changelog-git": "^0.2.1",
-        "@changesets/cli": "^2.31.1",
-        "@trivago/prettier-plugin-sort-imports": "^5.2.2",
-        "@types/trusted-types": "^2.0.7",
-        "happy-dom": "^20.11.2",
-        "prettier": "^3.5.3",
-        "prettier-plugin-css-order": "^2.1.2",
-        "terser": "^5.50.0",
-        "typescript": "^7.0.2",
-        "vite": "^8.2.1",
-        "vitest": "^4.1.11"
+  "name": "sonner-a11y",
+  "version": "0.0.0",
+  "description": "An accessible toast component for pure JavaScript: screen-reader announcements, full keyboard operation, WCAG 2.2 AA. Fork of sonner-js.",
+  "keywords": [
+    "a11y",
+    "accessibility",
+    "aria",
+    "keyboard",
+    "notification",
+    "screen-reader",
+    "toast",
+    "wcag"
+  ],
+  "homepage": "https://github.com/hebus/sonner-a11y",
+  "bugs": "https://github.com/hebus/sonner-a11y/issues",
+  "license": "MIT",
+  "author": "huanfei",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hebus/sonner-a11y.git"
+  },
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/index.cjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.mjs"
+      },
+      "require": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.cjs"
+      },
+      "types": "./dist/index.d.ts"
     }
+  },
+  "scripts": {
+    "dev": "vite",
+    "build:watch": "vite build --watch",
+    "build": "vite build && tsc -p tsconfig.build.json",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit",
+    "format": "oxfmt .",
+    "format:check": "oxfmt --check .",
+    "lint": "oxlint",
+    "lint:fix": "oxlint --fix",
+    "changeset": "changeset",
+    "changeset:status": "changeset status",
+    "changeset:version": "changeset version && pnpm install --lockfile-only",
+    "release": "node scripts/release.mjs",
+    "release:dry": "node scripts/release.mjs --dry-run",
+    "prepublishOnly": "pnpm build"
+  },
+  "devDependencies": {
+    "@changesets/changelog-git": "^0.2.1",
+    "@changesets/cli": "^2.31.1",
+    "@types/trusted-types": "^2.0.7",
+    "happy-dom": "^20.11.2",
+    "oxfmt": "^0.64.0",
+    "oxlint": "^1.79.0",
+    "oxlint-tsgolint": "^7.0.2001",
+    "terser": "^5.50.0",
+    "typescript": "^7.0.2",
+    "vite": "^8.2.1",
+    "vitest": "^4.1.11"
+  },
+  "packageManager": "pnpm@10.17.0"
 }

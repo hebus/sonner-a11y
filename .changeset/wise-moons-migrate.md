@@ -1,5 +1,5 @@
 ---
-'sonner-a11y': major
+"sonner-a11y": major
 ---
 
 Ships as ESM and CommonJS, built with Vite and TypeScript 7

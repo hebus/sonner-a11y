@@ -1,0 +1,26 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": ["typescript", "unicorn", "oxc", "import", "promise", "vitest"],
+  "categories": {
+    "correctness": "error",
+    "suspicious": "warn"
+  },
+  "options": {
+    "typeAware": true
+  },
+  "rules": {
+    // `cond && fn()` and `cond ? a() : b()` are used as statements throughout the codebase
+    "no-unused-expressions": ["error", { "allowShortCircuit": true, "allowTernary": true }],
+    // DOM code asserts the result of querySelector/closest, which the rule cannot see through;
+    // type guards on every lookup would be pure noise here
+    "typescript/no-unsafe-type-assertion": "off",
+    // the two call sites reverse an array the spread just created, so nothing shared is mutated,
+    // and `toReversed()` does not exist on the NodeList they start from
+    "unicorn/no-array-reverse": "off",
+    // `__unsafeCreateTrustedHtml` is deliberately marked: the prefix is the warning
+    "no-underscore-dangle": "off",
+    // the chain in `toast.promise` is side-effect only, it has no value to hand back
+    "promise/always-return": "off"
+  },
+  "ignorePatterns": ["dist", "website"]
+}

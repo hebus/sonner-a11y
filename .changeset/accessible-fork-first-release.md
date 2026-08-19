@@ -1,5 +1,5 @@
 ---
-'sonner-a11y': major
+"sonner-a11y": major
 ---
 
 First release of the accessibility-focused fork of [sonner-js](https://github.com/huanfe1/sonner-js).
