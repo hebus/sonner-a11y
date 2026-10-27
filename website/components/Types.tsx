@@ -114,7 +114,7 @@ toast.promise(promise, {
     },
     {
         name: 'Custom',
-        snippet: `toast('<div>A custom toast with default styling</div>')`,
-        action: () => toast('<div>A custom toast with default styling</div>'),
+        snippet: `toast('<div>A custom toast with default styling</div>', { titleAsHtml: true })`,
+        action: () => toast('<div>A custom toast with default styling</div>', { titleAsHtml: true }),
     },
 ];
