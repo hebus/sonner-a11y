@@ -1,5 +1,11 @@
 # sonner-a11y
 
+## 1.1.2
+
+### Patch Changes
+
+- dcf42a9: fix: wrap long unbreakable text (e.g. fully qualified type names in server errors) inside the toast instead of overflowing its container
+
 ## 1.1.1
 
 ### Patch Changes
