@@ -69,6 +69,14 @@ const allTypes = [
         action: () => toast.error('Event has not been created'),
     },
     {
+        name: 'Long error',
+        snippet: `toast.error('Invalid json in the request: The JSON value could not be converted to MyCompany.Web.Api.UserData.ViewModels.PatchUserProfileDataRequestViewModel. Path: $ | LineNumber: 0 | BytePositionInLine: 17.')`,
+        action: () =>
+            toast.error(
+                'Invalid json in the request: The JSON value could not be converted to MyCompany.Web.Api.UserData.ViewModels.PatchUserProfileDataRequestViewModel. Path: $ | LineNumber: 0 | BytePositionInLine: 17.',
+            ),
+    },
+    {
         name: 'Action',
         snippet: `toast('Event has been created', {
   action: {
