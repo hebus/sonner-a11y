@@ -406,20 +406,15 @@
   border-radius: 50%;
   background: var(--_sonner-normal-bg);
   padding: 0;
-  width: 20px;
-  height: 20px;
+  /* 24x24 CSS px on the element itself (WCAG 2.5.8): a ::before that only enlarges the hit area is
+       not counted by axe, which then fails the button whenever another target sits within 24px */
+  width: 24px;
+  height: 24px;
   color: var(--_sonner-gray12);
 
   &:hover {
     border-color: var(--_sonner-gray5);
     background: var(--_sonner-gray2);
-  }
-
-  /* enlarges the hit area to 24x24 CSS px (WCAG 2.5.8) without changing the visuals */
-  &::before {
-    position: absolute;
-    inset: -2px;
-    content: "";
   }
 
   /* outline rather than box-shadow: the former is forced to CanvasText in forced-colors mode,
