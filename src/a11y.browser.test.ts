@@ -125,6 +125,19 @@ it("gives the close button an accessible name that follows the labels", async ()
   expect(close.getAttribute("aria-label")).toBe("Fermer la notification");
 });
 
+it("sizes the close button to at least 24x24 CSS px on the element itself (WCAG 2.5.8)", async () => {
+  trigger();
+  toast("hello", { closeButton: true });
+  await vi.waitFor(() => expect(toasts()).toHaveLength(1));
+
+  // measured on the element, not on a pseudo-element: automated checkers ignore ::before hit areas.
+  // offsetWidth/offsetHeight are layout sizes: getBoundingClientRect() applies the toast's
+  // in-flight transform and reads 23.999998 mid-animation
+  const close = shadow().querySelector<HTMLElement>("[data-close-button]")!;
+  expect(close.offsetWidth).toBeGreaterThanOrEqual(24);
+  expect(close.offsetHeight).toBeGreaterThanOrEqual(24);
+});
+
 it("names the notification region and mentions the hotkey", async () => {
   trigger();
   toast("hello");
